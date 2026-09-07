@@ -4,239 +4,137 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kalkulačka pre kraj</title>
-<meta name="description" content="Volebná kalkulačka pre voľby do Trnavského samosprávneho kraja 2026" />
+<meta name="description" content="Volebná kalkulačka pre voľby do samosprávnych krajov Slovenska 2026" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#152225;
-    --ink-soft:#3c4d4d;
-    --paper:#EEF0E7;
-    --paper-card:#FBFCF7;
-    --paper-raised:#FFFFFF;
-    --line:rgba(21,34,37,0.14);
-    --line-strong:rgba(21,34,37,0.28);
-    --accent:#3F6B4E;
-    --accent-strong:#2C4E38;
-    --accent-tint:rgba(63,107,78,0.12);
-    --amber:#B8752A;
-    --amber-tint:rgba(184,117,42,0.14);
-    --bloc-a:#3F6B4E;
-    --bloc-b:#9C3B3B;
-    --bloc-c:#3A6B8A;
-    --bloc-minor:#7A5A9C;
-    --bloc-ind:#6B6558;
+    --ink:#152225; --ink-soft:#3c4d4d;
+    --paper:#EEF0E7; --paper-card:#FBFCF7; --paper-raised:#FFFFFF;
+    --line:rgba(21,34,37,0.14); --line-strong:rgba(21,34,37,0.28);
+    --accent:#3F6B4E; --accent-strong:#2C4E38; --accent-tint:rgba(63,107,78,0.12);
+    --amber:#B8752A; --amber-tint:rgba(184,117,42,0.14);
+    --bloc-a:#3F6B4E; --bloc-b:#9C3B3B; --bloc-c:#3A6B8A; --bloc-minor:#7A5A9C; --bloc-ind:#6B6558;
     --shadow:0 1px 2px rgba(21,34,37,0.06), 0 8px 24px -12px rgba(21,34,37,0.18);
     --focus:#1E5FA8;
     color-scheme: light;
   }
   @media (prefers-color-scheme: dark){
     :root:not([data-theme="light"]){
-      --ink:#E9ECE2;
-      --ink-soft:#B7C0B2;
-      --paper:#101917;
-      --paper-card:#16211E;
-      --paper-raised:#1B2723;
-      --line:rgba(233,236,226,0.14);
-      --line-strong:rgba(233,236,226,0.26);
-      --accent:#7FB88C;
-      --accent-strong:#9ED1A6;
-      --accent-tint:rgba(127,184,140,0.16);
-      --amber:#E0A15C;
-      --amber-tint:rgba(224,161,92,0.16);
-      --bloc-a:#7FB88C;
-      --bloc-b:#D98787;
-      --bloc-c:#7FB2D9;
-      --bloc-minor:#B79BDB;
-      --bloc-ind:#B7AF9D;
+      --ink:#E9ECE2; --ink-soft:#B7C0B2;
+      --paper:#101917; --paper-card:#16211E; --paper-raised:#1B2723;
+      --line:rgba(233,236,226,0.14); --line-strong:rgba(233,236,226,0.26);
+      --accent:#7FB88C; --accent-strong:#9ED1A6; --accent-tint:rgba(127,184,140,0.16);
+      --amber:#E0A15C; --amber-tint:rgba(224,161,92,0.16);
+      --bloc-a:#7FB88C; --bloc-b:#D98787; --bloc-c:#7FB2D9; --bloc-minor:#B79BDB; --bloc-ind:#B7AF9D;
       --shadow:0 1px 2px rgba(0,0,0,0.3), 0 12px 28px -14px rgba(0,0,0,0.6);
       color-scheme: dark;
     }
   }
   :root[data-theme="dark"]{
-    --ink:#E9ECE2;
-    --ink-soft:#B7C0B2;
-    --paper:#101917;
-    --paper-card:#16211E;
-    --paper-raised:#1B2723;
-    --line:rgba(233,236,226,0.14);
-    --line-strong:rgba(233,236,226,0.26);
-    --accent:#7FB88C;
-    --accent-strong:#9ED1A6;
-    --accent-tint:rgba(127,184,140,0.16);
-    --amber:#E0A15C;
-    --amber-tint:rgba(224,161,92,0.16);
-    --bloc-a:#7FB88C;
-    --bloc-b:#D98787;
-    --bloc-c:#7FB2D9;
-    --bloc-minor:#B79BDB;
-    --bloc-ind:#B7AF9D;
+    --ink:#E9ECE2; --ink-soft:#B7C0B2;
+    --paper:#101917; --paper-card:#16211E; --paper-raised:#1B2723;
+    --line:rgba(233,236,226,0.14); --line-strong:rgba(233,236,226,0.26);
+    --accent:#7FB88C; --accent-strong:#9ED1A6; --accent-tint:rgba(127,184,140,0.16);
+    --amber:#E0A15C; --amber-tint:rgba(224,161,92,0.16);
+    --bloc-a:#7FB88C; --bloc-b:#D98787; --bloc-c:#7FB2D9; --bloc-minor:#B79BDB; --bloc-ind:#B7AF9D;
     --shadow:0 1px 2px rgba(0,0,0,0.3), 0 12px 28px -14px rgba(0,0,0,0.6);
     color-scheme: dark;
   }
 
   *{box-sizing:border-box;}
-  body{
-    margin:0;
-    background:var(--paper);
-    color:var(--ink);
-    font-family:"Public Sans", ui-sans-serif, system-ui, sans-serif;
-    -webkit-font-smoothing:antialiased;
-  }
-  h1,h2,h3{
-    font-family:"Fraunces", Georgia, serif;
-    text-wrap:balance;
-    margin:0;
-    color:var(--ink);
-  }
+  body{ margin:0; background:var(--paper); color:var(--ink); font-family:"Public Sans", ui-sans-serif, system-ui, sans-serif; -webkit-font-smoothing:antialiased; }
+  h1,h2,h3{ font-family:"Fraunces", Georgia, serif; text-wrap:balance; margin:0; color:var(--ink); }
   .mono{ font-family:"IBM Plex Mono", ui-monospace, monospace; }
   a{ color:var(--accent-strong); }
-  a:focus-visible, button:focus-visible, [tabindex]:focus-visible{
-    outline:2.5px solid var(--focus);
-    outline-offset:2px;
-  }
+  a:focus-visible, button:focus-visible, [tabindex]:focus-visible{ outline:2.5px solid var(--focus); outline-offset:2px; }
+  .wrap{ max-width:860px; margin:0 auto; padding:0 24px 96px; }
 
-  .wrap{ max-width:840px; margin:0 auto; padding:0 24px 96px; }
-
-  /* ---------- HEADER ---------- */
-  header.top{
-    border-bottom:1px solid var(--line);
-    background:var(--paper);
-    position:sticky; top:0; z-index:20;
-    backdrop-filter:saturate(1.1);
-  }
-  .top-inner{
-    max-width:840px; margin:0 auto; padding:14px 24px;
-    display:flex; align-items:center; justify-content:space-between; gap:16px;
-  }
-  .brand{ display:flex; align-items:baseline; gap:10px; }
-  .brand .mark{
-    font-family:"Fraunces", serif; font-weight:700; font-size:1.05rem;
-    letter-spacing:0.01em;
-  }
+  header.top{ border-bottom:1px solid var(--line); background:var(--paper); position:sticky; top:0; z-index:20; }
+  .top-inner{ max-width:860px; margin:0 auto; padding:14px 24px; display:flex; align-items:center; justify-content:space-between; gap:16px; }
+  .brand{ display:flex; align-items:baseline; gap:10px; cursor:pointer; }
+  .brand .mark{ font-family:"Fraunces", serif; font-weight:700; font-size:1.05rem; }
   .brand .mark .dot{ color:var(--amber); }
   .brand .sub{ font-size:0.72rem; color:var(--ink-soft); letter-spacing:0.06em; text-transform:uppercase; }
-  .progress-pill{
-    font-family:"IBM Plex Mono"; font-size:0.72rem; color:var(--ink-soft);
-    border:1px solid var(--line-strong); border-radius:99px; padding:5px 12px;
-    white-space:nowrap;
-  }
+  .crumbs{ font-family:"IBM Plex Mono"; font-size:0.72rem; color:var(--ink-soft); display:flex; gap:6px; align-items:center; }
+  .crumbs b{ color:var(--ink); font-weight:600; }
 
-  /* ---------- HERO ---------- */
   .hero{ padding:52px 0 30px; }
-  .eyebrow{
-    display:inline-flex; align-items:center; gap:8px;
-    font-family:"IBM Plex Mono"; font-size:0.74rem; letter-spacing:0.07em; text-transform:uppercase;
-    color:var(--accent-strong); background:var(--accent-tint);
-    padding:5px 11px; border-radius:99px; margin-bottom:18px;
-  }
+  .eyebrow{ display:inline-flex; align-items:center; gap:8px; font-family:"IBM Plex Mono"; font-size:0.74rem; letter-spacing:0.07em; text-transform:uppercase; color:var(--accent-strong); background:var(--accent-tint); padding:5px 11px; border-radius:99px; margin-bottom:18px; }
   .eyebrow::before{ content:"●"; font-size:0.6rem; }
-  .hero h1{ font-size:clamp(2rem, 4.6vw, 2.85rem); line-height:1.08; font-weight:700; max-width:14ch; }
-  .hero p.lede{
-    font-size:1.05rem; line-height:1.6; color:var(--ink-soft);
-    max-width:56ch; margin-top:16px;
-  }
-  .hero-facts{
-    display:flex; flex-wrap:wrap; gap:10px; margin-top:26px;
-  }
-  .fact{
-    border:1px solid var(--line); background:var(--paper-card);
-    border-radius:10px; padding:9px 13px; font-size:0.82rem; color:var(--ink-soft);
-    display:flex; gap:7px; align-items:baseline;
-  }
+  .hero h1{ font-size:clamp(2rem, 4.6vw, 2.85rem); line-height:1.08; font-weight:700; max-width:16ch; }
+  .hero p.lede{ font-size:1.05rem; line-height:1.6; color:var(--ink-soft); max-width:58ch; margin-top:16px; }
+  .hero-facts{ display:flex; flex-wrap:wrap; gap:10px; margin-top:26px; }
+  .fact{ border:1px solid var(--line); background:var(--paper-card); border-radius:10px; padding:9px 13px; font-size:0.82rem; color:var(--ink-soft); display:flex; gap:7px; align-items:baseline; }
   .fact b{ color:var(--ink); font-weight:600; }
-  .disclosure{
-    margin-top:24px; border-left:3px solid var(--amber); background:var(--amber-tint);
-    padding:13px 16px; border-radius:0 8px 8px 0; font-size:0.86rem; line-height:1.55; color:var(--ink-soft);
-  }
+  .disclosure{ margin-top:24px; border-left:3px solid var(--amber); background:var(--amber-tint); padding:13px 16px; border-radius:0 8px 8px 0; font-size:0.86rem; line-height:1.55; color:var(--ink-soft); }
   .disclosure b{ color:var(--ink); }
+
+  /* ---- picker grids (kraj / obvod) ---- */
+  .picker-head{ margin-top:40px; }
+  .picker-head h2{ font-size:1.5rem; }
+  .picker-head p{ color:var(--ink-soft); font-size:0.92rem; margin-top:8px; max-width:56ch; line-height:1.5; }
+  .grid-krajov{ display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:12px; margin-top:22px; }
+  .kraj-card{
+    text-align:left; border:1.5px solid var(--line-strong); background:var(--paper-card); border-radius:14px;
+    padding:16px 18px; cursor:pointer; font-family:"Public Sans"; box-shadow:var(--shadow);
+    transition:border-color .15s ease, transform .1s ease;
+  }
+  .kraj-card:hover{ border-color:var(--accent); transform:translateY(-1px); }
+  .kraj-card:disabled{ cursor:not-allowed; opacity:0.5; transform:none; }
+  .kraj-card .kname{ font-family:"Fraunces"; font-weight:600; font-size:1.08rem; color:var(--ink); }
+  .kraj-card .kmeta{ font-size:0.78rem; color:var(--ink-soft); margin-top:6px; }
+  .kraj-card .kstatus{ font-family:"IBM Plex Mono"; font-size:0.68rem; text-transform:uppercase; letter-spacing:0.04em; margin-top:10px; display:inline-block; padding:3px 9px; border-radius:99px; }
+  .kstatus.ready{ background:var(--accent-tint); color:var(--accent-strong); }
+  .kstatus.pending{ background:var(--line); color:var(--ink-soft); }
+
+  .grid-obvody{ display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:12px; margin-top:22px; }
+  .obvod-card{
+    text-align:left; border:1.5px solid var(--line-strong); background:var(--paper-card); border-radius:14px;
+    padding:16px 18px; cursor:pointer; font-family:"Public Sans"; box-shadow:var(--shadow);
+  }
+  .obvod-card:hover{ border-color:var(--accent); }
+  .obvod-card .oname{ font-family:"Fraunces"; font-weight:600; font-size:1.02rem; }
+  .obvod-card .ometa{ font-size:0.8rem; color:var(--ink-soft); margin-top:5px; }
+  .back-link{ font-size:0.84rem; color:var(--ink-soft); background:none; border:none; cursor:pointer; text-decoration:underline; font-family:"Public Sans"; padding:0; margin-top:26px; }
 
   /* ---------- QUIZ ---------- */
   section.quiz{ padding-top:40px; }
-  .quiz-shell{
-    border:1px solid var(--line); background:var(--paper-card);
-    border-radius:18px; box-shadow:var(--shadow); overflow:hidden;
-  }
+  .quiz-shell{ border:1px solid var(--line); background:var(--paper-card); border-radius:18px; box-shadow:var(--shadow); overflow:hidden; }
   .bar-track{ height:5px; background:var(--line); }
   .bar-fill{ height:100%; background:var(--accent); transition:width .35s ease; }
   @media (prefers-reduced-motion:reduce){ .bar-fill{ transition:none; } }
-
   .q-body{ padding:34px 30px 28px; }
-  .q-meta{
-    display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;
-  }
+  .q-meta{ display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; }
   .q-count{ font-family:"IBM Plex Mono"; font-size:0.76rem; color:var(--ink-soft); }
-  .q-axis{
-    font-family:"IBM Plex Mono"; font-size:0.7rem; letter-spacing:0.05em; text-transform:uppercase;
-    color:var(--accent-strong);
-  }
+  .q-axis{ font-family:"IBM Plex Mono"; font-size:0.7rem; letter-spacing:0.05em; text-transform:uppercase; color:var(--accent-strong); }
   .q-text{ font-family:"Fraunces"; font-weight:500; font-size:1.32rem; line-height:1.38; text-wrap:balance; }
-
   .likert{ display:grid; grid-template-columns:repeat(5,1fr); gap:8px; margin-top:26px; }
-  .likert button{
-    font-family:"Public Sans"; font-weight:600; font-size:0.78rem; line-height:1.25;
-    padding:13px 6px; border-radius:10px; border:1.5px solid var(--line-strong);
-    background:var(--paper-raised); color:var(--ink-soft); cursor:pointer;
-    transition:border-color .15s ease, background .15s ease, color .15s ease, transform .1s ease;
-  }
+  .likert button{ font-family:"Public Sans"; font-weight:600; font-size:0.78rem; line-height:1.25; padding:13px 6px; border-radius:10px; border:1.5px solid var(--line-strong); background:var(--paper-raised); color:var(--ink-soft); cursor:pointer; transition:border-color .15s ease, background .15s ease, color .15s ease, transform .1s ease; }
   .likert button:hover{ border-color:var(--accent); color:var(--ink); }
-  .likert button.sel{
-    background:var(--accent); border-color:var(--accent); color:#F6FBF3;
-    transform:translateY(-1px);
-  }
-  @media (max-width:560px){
-    .likert{ grid-template-columns:1fr 1fr; }
-    .likert button:last-child{ grid-column:1 / -1; }
-  }
+  .likert button.sel{ background:var(--accent); border-color:var(--accent); color:#F6FBF3; transform:translateY(-1px); }
+  @media (max-width:560px){ .likert{ grid-template-columns:1fr 1fr; } .likert button:last-child{ grid-column:1 / -1; } }
   .skip-row{ margin-top:14px; text-align:right; }
-  .skip-row button{
-    background:none; border:none; color:var(--ink-soft); font-size:0.78rem;
-    text-decoration:underline; cursor:pointer; font-family:"Public Sans";
-  }
-
-  .q-nav{
-    display:flex; justify-content:space-between; align-items:center;
-    border-top:1px solid var(--line); padding:16px 30px; background:var(--paper);
-  }
-  .navbtn{
-    font-family:"Public Sans"; font-weight:600; font-size:0.88rem;
-    padding:10px 18px; border-radius:9px; cursor:pointer; border:1.5px solid var(--line-strong);
-    background:var(--paper-raised); color:var(--ink);
-  }
+  .skip-row button{ background:none; border:none; color:var(--ink-soft); font-size:0.78rem; text-decoration:underline; cursor:pointer; font-family:"Public Sans"; }
+  .q-nav{ display:flex; justify-content:space-between; align-items:center; border-top:1px solid var(--line); padding:16px 30px; background:var(--paper); }
+  .navbtn{ font-family:"Public Sans"; font-weight:600; font-size:0.88rem; padding:10px 18px; border-radius:9px; cursor:pointer; border:1.5px solid var(--line-strong); background:var(--paper-raised); color:var(--ink); }
   .navbtn.primary{ background:var(--ink); border-color:var(--ink); color:var(--paper); }
   .navbtn:disabled{ opacity:0.35; cursor:not-allowed; }
-  .navbtn.primary:disabled{ opacity:0.3; }
 
   /* ---------- RESULTS ---------- */
   #results{ padding-top:52px; }
-  .results-head{ margin-bottom:8px; }
   .results-head h2{ font-size:1.9rem; }
   .results-sub{ color:var(--ink-soft); font-size:0.95rem; margin-top:8px; max-width:60ch; line-height:1.55; }
-
-  .section-tag{
-    display:flex; align-items:center; gap:10px; margin:44px 0 18px;
-  }
-  .section-tag .n{
-    font-family:"IBM Plex Mono"; font-size:0.75rem; color:var(--paper);
-    background:var(--ink); border-radius:99px; width:24px; height:24px;
-    display:flex; align-items:center; justify-content:center; flex:none;
-  }
+  .section-tag{ display:flex; align-items:center; gap:10px; margin:44px 0 18px; }
+  .section-tag .n{ font-family:"IBM Plex Mono"; font-size:0.75rem; color:var(--paper); background:var(--ink); border-radius:99px; width:24px; height:24px; display:flex; align-items:center; justify-content:center; flex:none; }
   .section-tag h3{ font-size:1.25rem; }
   .section-tag .cnt{ margin-left:auto; font-size:0.78rem; color:var(--ink-soft); font-family:"IBM Plex Mono"; }
-
   .cand-list{ display:flex; flex-direction:column; gap:12px; }
-  .cand-card{
-    border:1px solid var(--line); background:var(--paper-card); border-radius:14px;
-    padding:18px 20px; box-shadow:var(--shadow);
-  }
+  .cand-card{ border:1px solid var(--line); background:var(--paper-card); border-radius:14px; padding:18px 20px; box-shadow:var(--shadow); }
   .cand-top{ display:flex; align-items:flex-start; gap:14px; }
   .rank{ font-family:"IBM Plex Mono"; font-size:0.78rem; color:var(--ink-soft); padding-top:4px; width:1.4em; flex:none; }
-  .avatar{
-    flex:none; width:44px; height:44px; border-radius:50%;
-    display:flex; align-items:center; justify-content:center;
-    font-family:"Fraunces"; font-weight:600; font-size:1rem; color:#fff;
-  }
+  .avatar{ flex:none; width:44px; height:44px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:"Fraunces"; font-weight:600; font-size:1rem; color:#fff; }
   .cand-info{ flex:1 1 auto; min-width:0; }
   .cand-name{ font-family:"Fraunces"; font-weight:600; font-size:1.12rem; }
   .cand-role{ color:var(--ink-soft); font-size:0.86rem; margin-top:2px; }
@@ -246,63 +144,33 @@
   .match-label{ font-size:0.66rem; color:var(--ink-soft); text-transform:uppercase; letter-spacing:0.05em; }
   .meter{ height:6px; border-radius:99px; background:var(--line); margin-top:8px; overflow:hidden; }
   .meter i{ display:block; height:100%; border-radius:99px; }
-
   .cand-bio{ font-size:0.9rem; line-height:1.55; color:var(--ink-soft); margin-top:13px; }
   .agree-list{ margin-top:10px; display:flex; flex-wrap:wrap; gap:6px; }
-  .agree-chip{
-    font-size:0.74rem; border:1px solid var(--line); border-radius:99px;
-    padding:3px 10px; color:var(--ink-soft); background:var(--paper-raised);
-  }
+  .agree-chip{ font-size:0.74rem; border:1px solid var(--line); border-radius:99px; padding:3px 10px; color:var(--ink-soft); background:var(--paper-raised); }
   .cand-src{ margin-top:12px; font-size:0.78rem; }
   .cand-src a{ margin-right:10px; }
-
-  details.roster{
-    margin-top:10px; border-top:1px solid var(--line); padding-top:10px;
-  }
-  details.roster summary{
-    cursor:pointer; font-size:0.82rem; font-weight:600; color:var(--accent-strong);
-    list-style:none;
-  }
+  details.roster{ margin-top:10px; border-top:1px solid var(--line); padding-top:10px; }
+  details.roster summary{ cursor:pointer; font-size:0.82rem; font-weight:600; color:var(--accent-strong); list-style:none; }
   details.roster summary::-webkit-details-marker{ display:none; }
   details.roster summary::before{ content:"▸ "; }
   details.roster[open] summary::before{ content:"▾ "; }
   .roster-grid{ margin-top:10px; display:grid; gap:6px; }
-  .roster-item{
-    font-size:0.83rem; color:var(--ink-soft); display:flex; gap:8px; padding:4px 0;
-    border-bottom:1px dashed var(--line);
-  }
+  .roster-item{ font-size:0.83rem; color:var(--ink-soft); display:flex; gap:8px; padding:4px 0; border-bottom:1px dashed var(--line); }
   .roster-item b{ color:var(--ink); font-weight:600; }
-
-  .indep-box{
-    border:1px dashed var(--line-strong); border-radius:14px; padding:18px 20px;
-    background:var(--paper-card);
-  }
+  .indep-box{ border:1px dashed var(--line-strong); border-radius:14px; padding:18px 20px; background:var(--paper-card); }
   .indep-box h4{ font-family:"Fraunces"; font-size:1.02rem; font-weight:600; }
   .indep-box p{ font-size:0.86rem; color:var(--ink-soft); line-height:1.55; margin:8px 0 14px; }
   .indep-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(210px,1fr)); gap:4px 18px; }
   .indep-item{ font-size:0.83rem; padding:5px 0; border-bottom:1px dashed var(--line); color:var(--ink-soft); }
   .indep-item b{ color:var(--ink); font-weight:600; }
+  .retake{ margin-top:40px; text-align:center; display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+  .retake button{ font-family:"Public Sans"; font-weight:600; font-size:0.86rem; color:var(--ink); background:var(--paper-raised); border:1.5px solid var(--line-strong); border-radius:9px; padding:11px 22px; cursor:pointer; }
 
-  .retake{ margin-top:40px; text-align:center; }
-  .retake button{
-    font-family:"Public Sans"; font-weight:600; font-size:0.86rem; color:var(--ink);
-    background:var(--paper-raised); border:1.5px solid var(--line-strong); border-radius:9px;
-    padding:11px 22px; cursor:pointer;
-  }
-
-  /* ---------- METHODOLOGY / FOOTER ---------- */
-  .method{
-    margin-top:56px; border-top:1px solid var(--line); padding-top:28px;
-    font-size:0.86rem; color:var(--ink-soft); line-height:1.6;
-  }
+  .method{ margin-top:56px; border-top:1px solid var(--line); padding-top:28px; font-size:0.86rem; color:var(--ink-soft); line-height:1.6; }
   .method h3{ font-size:1.05rem; color:var(--ink); margin-bottom:10px; }
-  .method ul{ padding-left:1.2em; margin:10px 0; }
   .src-grid{ display:grid; gap:4px; margin-top:8px; }
   .src-grid a{ font-size:0.82rem; }
-  footer.foot{
-    margin-top:40px; padding-top:20px; border-top:1px solid var(--line);
-    font-size:0.78rem; color:var(--ink-soft); text-align:center;
-  }
+  footer.foot{ margin-top:40px; padding-top:20px; border-top:1px solid var(--line); font-size:0.78rem; color:var(--ink-soft); text-align:center; }
 
   [hidden]{ display:none !important; }
 </style>
@@ -311,31 +179,47 @@
 
 <header class="top">
   <div class="top-inner">
-    <div class="brand">
+    <div class="brand" id="brandHome">
       <span class="mark">Kalkulačka pre kraj<span class="dot">.</span></span>
-      <span class="sub">TTSK · voľby 2026</span>
+      <span class="sub">voľby VÚC 2026</span>
     </div>
-    <div class="progress-pill" id="topProgress">otázka 1 / 12</div>
+    <div class="crumbs" id="crumbs">1. Kraj</div>
   </div>
 </header>
 
 <div class="wrap">
 
-  <section class="hero">
+  <section class="hero" id="heroSection">
     <span class="eyebrow">Voľby VÚC · 24. október 2026</span>
-    <h1>Ktorý kandidát v Trnavskom kraji zmýšľa ako vy?</h1>
-    <p class="lede">12 otázok o smerovaní Trnavského samosprávneho kraja — doprava, zdravotníctvo, sociálne služby, poľnohospodárstvo, menšiny aj postoj k EÚ. Na konci uvidíte zhodu so všetkými 7 kandidátmi na predsedu TTSK a s koalíciami kandidujúcimi na poslancov vo volebnom obvode č. 7 (Trnava a okolie).</p>
+    <h1>Ktorý kandidát vo vašom kraji zmýšľa ako vy?</h1>
+    <p class="lede">Vyberte si kraj, potom volebný obvod, kde budete voliť poslancov, a odpovedzte na 12 otázok o doprave, zdravotníctve, sociálnych službách, poľnohospodárstve, menšinách aj vzťahu k EÚ. Na konci uvidíte zhodu so všetkými kandidátmi na predsedu kraja aj s koalíciami kandidujúcimi na poslancov vo vašom obvode.</p>
     <div class="hero-facts">
-      <div class="fact">🗳️ <b>7</b>&nbsp;kandidátov na predsedu</div>
-      <div class="fact">🪑 <b>50</b>&nbsp;kandidátov na poslancov, obvod č. 7</div>
-      <div class="fact">📋 zdroj: oficiálny zoznam Volebnej komisie TTSK, 3.&nbsp;9.&nbsp;2026</div>
+      <div class="fact">🗳️ <b>8</b>&nbsp;samosprávnych krajov</div>
+      <div class="fact">📋 zdroj: oficiálne zoznamy volebných komisií, 3.&nbsp;9.&nbsp;2026</div>
     </div>
     <div class="disclosure">
-      <b>Ako to funguje:</b> Táto kalkulačka nie je oficiálny nástroj TTSK ani žiadnej strany. Registračné zoznamy kandidátov obsahujú iba mená, vek, povolanie a kandidujúcu stranu — <b>neobsahujú programy kandidátov</b>. Postoje nižšie preto vychádzajú z verejne dostupných vyjadrení, médií a programov strán (zdroje sú uvedené pri každom kandidátovi aj v pätičke). Pri kandidátoch s menej medializovaným programom je časť postojov neutrálna namiesto odhadovanej. Pred voľbami si výsledok overte aj vo vlastnom prieskume.
+      <b>Ako to funguje:</b> Toto nie je oficiálny nástroj žiadneho kraja ani strany. Registračné zoznamy kandidátov obsahujú iba mená, vek, povolanie a kandidujúcu stranu — <b>neobsahujú programy kandidátov</b>. Postoje nižšie preto vychádzajú z verejne dostupných vyjadrení, médií a programov strán (zdroje sú uvedené pri každom kandidátovi aj v pätičke). Pri kandidátoch s menej medializovaným programom je časť postojov neutrálna namiesto odhadovanej. Pred voľbami si výsledok overte aj vo vlastnom prieskume.
     </div>
   </section>
 
-  <section class="quiz" id="quizSection">
+  <section id="screenKraj">
+    <div class="picker-head">
+      <h2>1. Vyberte kraj</h2>
+      <p>Kraje označené „pripravujeme“ ešte dopĺňame — dáta ku všetkým 8 krajom pribúdajú priebežne.</p>
+    </div>
+    <div class="grid-krajov" id="krajGrid"></div>
+  </section>
+
+  <section id="screenObvod" hidden>
+    <div class="picker-head">
+      <h2 id="obvodHeading">2. Vyberte volebný obvod</h2>
+      <p>V tomto obvode budete voliť poslancov krajského zastupiteľstva. Predsedu volí celý kraj naraz — jeho výsledok sa nemení podľa obvodu.</p>
+    </div>
+    <div class="grid-obvody" id="obvodGrid"></div>
+    <button class="back-link" id="backToKraj">← Späť na výber kraja</button>
+  </section>
+
+  <section class="quiz" id="quizSection" hidden>
     <div class="quiz-shell">
       <div class="bar-track"><div class="bar-fill" id="barFill" style="width:8.3%"></div></div>
       <div class="q-body">
@@ -358,13 +242,13 @@
 
   <section class="method">
     <h3>Metodika</h3>
-    <p>Každý kandidát/koalícia má na 12 otázkach priradenú hodnotu od −2 (rozhodne proti) po +2 (rozhodne za), odvodenú z ich verejných vyjadrení alebo programu strany, s ktorou kandidujú. Zhoda v % = 100 − priemerná odchýlka od vašich odpovedí (vynechané otázky sa do priemeru nepočítajú). Ide o orientačný nástroj na zamyslenie, nie o presné vedecké priradenie — kandidáti sa k jednotlivým výrokom priamo nevyjadrovali.</p>
+    <p>Každý kandidát/koalícia má na 12 otázkach priradenú hodnotu od −2 (rozhodne proti) po +2 (rozhodne za), odvodenú z ich verejných vyjadrení alebo programu strany, s ktorou kandidujú. Zhoda v % = 100 − priemerná odchýlka od vašich odpovedí (vynechané otázky sa do priemeru nepočítajú). Kandidáti na poslancov bez spoločnej koalície (nezávislí) nemajú priradený program, a preto sa im nepočíta zhoda — sú len vypísaní pre vašu vlastnú orientáciu. Ide o orientačný nástroj na zamyslenie, nie o presné vedecké priradenie.</p>
     <h3 style="margin-top:22px;">Zdroje</h3>
     <div class="src-grid" id="srcGrid"></div>
   </section>
 
-  <footer class="foot">
-    Nezávislý neoficiálny projekt. Údaje o kandidátoch: Volebná komisia Trnavského samosprávneho kraja, 3. 9. 2026. Aktualizované 7. 9. 2026.
+  <footer class="foot" id="footNote">
+    Nezávislý neoficiálny projekt. Údaje o kandidátoch: volebné komisie jednotlivých samosprávnych krajov, september 2026.
   </footer>
 </div>
 
@@ -372,7 +256,7 @@
 (function(){
 
   var QUESTIONS = [
-    {axis:"Smerovanie kraja", short:"pokračovanie súčasného vedenia", text:"Trnavský kraj sa za posledné roky uberá správnym smerom — súčasnému vedeniu dôverujem."},
+    {axis:"Smerovanie kraja", short:"pokračovanie súčasného vedenia", text:"{KRAJ} sa za posledné roky uberá správnym smerom — súčasnému vedeniu dôverujem."},
     {axis:"Zdravotníctvo", short:"dostupnosť zdravotnej starostlivosti", text:"Dostupnosť zdravotnej starostlivosti (lekári, pohotovosti, 24-hodinové lekárne) by mala byť pre kraj prioritou číslo jeden."},
     {axis:"Doprava", short:"opravy ciest a dopravnej infraštruktúry", text:"Opravy ciest, mostov a modernizácia dopravy potrebujú urýchlene výrazne viac peňazí z krajského rozpočtu."},
     {axis:"Životné prostredie", short:"ochranu vody, pôdy a prírody", text:"Ochrana životného prostredia, vody a pôdy by mala mať prednosť aj pred rýchlejším hospodárskym rastom."},
@@ -387,186 +271,196 @@
   ];
 
   var LIKERT = [
-    {v:-2, label:"Rozhodne nie"},
-    {v:-1, label:"Skôr nie"},
-    {v:0,  label:"Neutrálne"},
-    {v:1,  label:"Skôr áno"},
-    {v:2,  label:"Rozhodne áno"}
+    {v:-2, label:"Rozhodne nie"}, {v:-1, label:"Skôr nie"}, {v:0, label:"Neutrálne"},
+    {v:1, label:"Skôr áno"}, {v:2, label:"Rozhodne áno"}
   ];
 
-  // vector index matches QUESTIONS index; null = neznámy/neutrálny postoj (vynechané z výpočtu)
-  var CHAIR = [
-    { name:"Jozef Viskupič", initials:"JV", age:50, role:"súčasný predseda TTSK · 3. kandidatúra", city:"Trnava",
-      coalition:"Progresívne Slovensko, SaS, KDH, Demokrati, Hnutie Slovensko, Maďarské fórum, OKS", color:"var(--bloc-a)",
-      bio:"Predsedom TTSK od roku 2017, obhajuje tretí mandát. Ako priority uvádza infraštruktúru a mosty, cyklotrasy, zdravotníctvo, sociálne služby, školstvo, kultúru, šport a pokračovanie v transparentnosti úradu.",
-      vector:[2,1,2,1,0,1,-2,-2,0,2,1,2],
-      sources:[{label:"Pravda", url:"https://spravy.pravda.sk/regiony/clanok/816515-viskupic-ide-znovu-do-boja-o-trnavsku-zupu-za-chrbtom-ma-silnu-zostavu-stran-aj-znamu-tvar/"},{label:"TTSK", url:"https://trnava-vuc.sk/zupan-ttsk/"}] },
-    { name:"Peter Hambálek", initials:"PH", age:44, role:"generálny štátny radca", city:"Trnava",
-      coalition:"Smer – SD, Hlas – SD, SNS, Republika", color:"var(--bloc-b)",
-      bio:"Podpredseda Správy štátnych hmotných rezerv, syn poslanca NR SR. Sľubuje kvalitné a udržiavané cesty, podporu stredných škôl, športu, kultúry a sociálnej oblasti — kraj podľa neho potrebuje „nový impulz a novú energiu“.",
-      vector:[-2,0,2,-1,1,0,1,-1,1,0,1,-1],
-      sources:[{label:"Postoj", url:"https://www.postoj.sk/198100/kandidatom-smeru-na-trnavskeho-zupana-je-peter-hambalek"},{label:"Trnavské rádio", url:"https://trnavske.radio/2026/07/31/dalsi-kandidat-na-zupana-smer-hlas-sns-a-republika-postavili-do-boja-petra-hambalka/"}] },
-    { name:"József Berényi", initials:"JB", age:59, role:"podpredseda TTSK od 2013", city:"Dolné Saliby",
-      coalition:"Magyar szövetség – Maďarská aliancia", color:"var(--bloc-minor)",
-      bio:"Deväť rokov vo vedení kraja ako podpredseda. Program stavia na cezhraničnej spolupráci a rozvoji južných okresov so silnou maďarskou menšinou, ktorej zastúpenie chce v kraji udržať.",
-      vector:[1,0,1,0,1,2,-1,-2,1,0,0,2],
-      sources:[{label:"Parlamentné listy", url:"https://www.parlamentnelisty.sk/spravy/678622/o-kreslo-predsedu-trnavskeho-kraja-sa-uchadza-sedem-kandidatov-zabojuje-on-berenyi-cehlarik-i-terajsi-viskupic/"}] },
-    { name:"Matej Lančarič", initials:"ML", age:41, role:"krajský a mestský poslanec, bývalý viceprimátor Trnavy", city:"Trnava",
-      coalition:"nezávislý kandidát · líder tímu „Za lepší Trnavský kraj“", color:"var(--bloc-ind)",
-      bio:"Od roku 2010 mestský poslanec, od 2017 krajský poslanec. Program: doprava a infraštruktúra, dostupnejšie zdravotníctvo (napr. 24-hodinové lekárne), reforma integrovanej dopravy, otvorené športoviská a dostupnejšie sociálne služby.",
-      vector:[-1,2,2,0,1,0,0,-2,0,1,2,1],
-      sources:[{label:"trnava-live.sk", url:"https://www.trnava-live.sk/2026/06/22/kandidaturu-na-zupana-oznamil-mestsky-a-krajsky-poslanec-matej-lancaric-do-volieb-vstupuje-ako-lider-timu-za-lepsi-trnavsky-kraj/"},{label:"Denník N", url:"https://dennikn.sk/minuta/5410406/"}] },
-    { name:"Jaroslav Cehlárik", initials:"JC", age:43, role:"riaditeľ, nepočujúci kandidát", city:"Opoj",
-      coalition:"Právo na pravdu", color:"var(--bloc-minor)",
-      bio:"Nepočujúci kandidát, v minulej kampani presadil vyššie odmeny tlmočníkov posunkovej reči a elektromobil pre kraj. Jeho strana Právo na pravdu stavia na národnej suverenite, tradičných hodnotách a dlhodobo zvažuje aj zrušenie VÚC.",
-      vector:[-1,null,null,null,null,0,2,2,1,1,1,-1],
-      sources:[{label:"SITA", url:"https://sita.sk/nepocujuci-jaroslav-cehlarik-sa-po-rokoch-opat-uchadza-o-kreslo-predsedu-trnavskeho-samospravneho-kraja/"}] },
-    { name:"Róbert Dohál", initials:"RD", age:64, role:"poľnohospodársky inžinier, vedie PD Krakovany-Stráže", city:"Krakovany",
-      coalition:"Alternatíva pre Slovensko", color:"var(--bloc-minor)",
-      bio:"Priekopník regeneratívneho poľnohospodárstva na Slovensku. Hlavné piliere programu: ochrana vody a pôdy, podpora regeneratívneho poľnohospodárstva a malých podnikateľov, hospodárska odolnosť regiónu.",
-      vector:[-1,null,0,2,2,0,0,-1,0,1,1,-1],
-      sources:[{label:"Epoch Times SK", url:"https://www.epochtimes.sk/r-dohal-poda-je-v-krize-a-potraviny-stracaju-hodnotu-regenerativne-polnohospodarstvo-je-jedina-alternativa-rozhovor_82275.html"},{label:"SME MY Trnava", url:"https://my.sme.sk/trnava/c/zupan-chce-treti-mandat-vyzvu-ho-poslanec-polnohospodar-a-kandidat-strany-smer"}] },
-    { name:"Štefan Pollák", initials:"ŠP", age:43, role:"účtovník", city:"Veľké Blahovo",
-      coalition:"SOS – Spoločne občania Slovenska", color:"var(--bloc-minor)",
-      bio:"Kandidát strany SOS, ktorá stavia na tradičných národných a kresťanských hodnotách, rodine ako základnej jednotke spoločnosti a silnom štáte. Konkrétny krajský program zatiaľ nebol medializovaný.",
-      vector:[-1,null,null,-1,1,-1,1,-1,2,null,1,-2],
-      sources:[{label:"SOS – strana", url:"https://www.sosstrana.sk/"},{label:"teraz.sk", url:"https://www.teraz.sk/regiony/volbyvuc26-o-post-predsedu-ttsk-sa-uc/990386-clanok.html"}] }
+  var KRAJ_META = [
+    {id:"bratislavsky", name:"Bratislavský kraj"},
+    {id:"trnavsky", name:"Trnavský kraj"},
+    {id:"trenciansky", name:"Trenčiansky kraj"},
+    {id:"nitriansky", name:"Nitriansky kraj"},
+    {id:"zilinsky", name:"Žilinský kraj"},
+    {id:"banskobystricky", name:"Banskobystrický kraj"},
+    {id:"presovsky", name:"Prešovský kraj"},
+    {id:"kosicky", name:"Košický kraj"}
   ];
 
-  var COUNCIL_BLOCS = [
-    { name:"Progresívne Slovensko, SaS, KDH, Demokrati, Hnutie Slovensko, Maďarské fórum, OKS", color:"var(--bloc-a)",
-      note:"Rovnaká koalícia, s akou obhajuje post Jozef Viskupič — plná kandidátka na všetkých 9 mandátov v obvode.",
-      vector:[2,1,2,1,0,1,-2,-2,0,2,1,2],
-      roster:["Mária Benová – SZČO, psychologička","Kristína Bolemanová – diplomatka, expertka na EÚ politiky","Zuzana Bošnáková – riaditeľka zariadenia pre seniorov","Marián Galbavý – advokát","Petra Helt – právnička, viceprednostka","Ľubica Horváthová – špecialistka na energetické projekty","Branislav Kramár – lekár-chirurg","Rastislav Mráz – podpredseda TTSK, právnik","Marián Viskupič – poslanec Národnej rady SR"] },
-    { name:"Smer – SD, Hlas – SD, SNS, Republika", color:"var(--bloc-b)",
-      note:"Rovnaká koalícia ako kandidát na predsedu Peter Hambálek — plná kandidátka na všetkých 9 mandátov.",
-      vector:[-2,0,2,-1,1,0,1,-1,1,0,1,-1],
-      roster:["Marta Gubrická – riaditeľka","Martin Halaksa – starosta obce Košolná","Peter Hambálek – generálny štátny radca (aj kandidát na predsedu)","Juraj Horváth – technik údržby","Martin Pullmann – vedúci štátny zamestnanec","Jozef Remenár – technik-špecialista","Marcel Škorec – starosta obce Hrnčiarovce nad Parnou","Lívia Voleková – zdravotná sestra","Ľudovít Žambokréthy – podnikateľ"] },
-    { name:"Trnava pre každého", color:"var(--bloc-c)",
-      note:"Regionálne hnutie okolo primátorského kandidáta Branislava Baroša — priority skôr mestské/pragmatické než ideologické.",
-      vector:[-1,0,2,1,1,0,0,-1,0,2,1,-1],
-      roster:["Branislav Baroš – riaditeľ strojárenskej spoločnosti","Mária Bullová – podnikateľka","Kashif Butt – manažér","Jana Fridrichová – lekárka","Milan Hejduk – zubný lekár","Miloš Krištofík – podnikateľ","Peter Markovič – silnoprúdový energetik","Peter Morvay – podnikateľ","Martina Šarvaicová – ekonómka, konateľka"] },
-    { name:"Právo na pravdu (Jaroslav Cehlárik)", color:"var(--bloc-minor)",
-      note:"Jediný kandidát strany v obvode — riaditeľ, nepočujúci aktivista za práva zdravotne znevýhodnených.",
-      vector:[-1,null,null,null,null,0,2,2,1,1,1,-1],
-      roster:["Jaroslav Cehlárik – riaditeľ, Opoj"] },
-    { name:"Alternatíva pre Slovensko (Anton Železník)", color:"var(--bloc-minor)",
-      note:"Rovnaká strana ako kandidát na predsedu Róbert Dohál — dôraz na hospodárenie a životné prostredie.",
-      vector:[-1,null,0,2,2,0,0,-1,0,1,1,-1],
-      roster:["Anton Železník – riaditeľ investičných projektov, Trnava"] },
-    { name:"Nova (Josef Filip Kozoň)", color:"var(--bloc-minor)",
-      note:"Liberálno-konzervatívna prozápadná strana, dôraz na boj proti korupcii a trhové riešenia.",
-      vector:[-1,0,0,0,1,0,-1,-1,1,2,0,-1],
-      roster:["Josef Filip Kozoň – poslanec, Bohdanovce nad Trnavou"] },
-    { name:"Kotlebovci – Ľudová strana Naše Slovensko (Ján Chalama)", color:"var(--bloc-minor)",
-      note:"Krajne pravicová, národovecká strana, odmieta podporu menšín a presadzuje tvrdú suverenitu.",
-      vector:[-2,0,0,-1,0,-2,2,0,2,1,0,-1],
-      roster:["Ján Chalama – obchodný zástupca, Trnava"] },
-    { name:"Slovexit (Vladimír Ondrejička, Róbert Smák)", color:"var(--bloc-minor)",
-      note:"Jednoproblémové hnutie presadzujúce vystúpenie Slovenska z EÚ a NATO.",
-      vector:[-1,0,0,0,0,0,2,0,1,0,0,-1],
-      roster:["Vladimír Ondrejička – revízny technik, Križovany nad Dudváhom","Róbert Smák – hlavný kuchár, Križovany nad Dudváhom"] }
-  ];
+  // ===== KRAJ DATA =====
+  // Each entry: { chair:{candidates:[...]}, obvody:[{number,seats,areaLabel,blocs:[{name,note,vector,roster}],independents:[...]}] }
+  // Missing / not-yet-researched regions are simply absent from this object.
+  var KRAJE = {"banskobystricky": {"krajId": "banskobystricky", "krajName": "Banskobystrický kraj", "chair": {"candidates": [{"name": "Ondrej Lunter", "initials": "OL", "age": 39, "role": "predseda Banskobystrického samosprávneho kraja (súčasný, obhajuje mandát)", "city": "Banská Bystrica", "coalition": "nezávislý kandidát (podpora SaS, Aliancia, Hlas-SD, KDH, Progresívne Slovensko, Maďarská aliancia a i.)", "bio": "Predsedom BBSK je od novembra 2022 (nastúpil po svojom otcovi Jánovi Lunterovi), vyštudoval politológiu na Masarykovej univerzite v Brne. Obhajuje mandát ako nezávislý kandidát so širokou podporou koaličných aj opozičných strán. Program stavia na zdvojnásobení počtu ambulancií, modernizácii nemocnice v Lučenci, podpore rezidentského programu pre lekárov a dostupnosti okresných miest do Banskej Bystrice/Zvolena do hodiny cesty, vrátane opráv ciest II. a III. triedy a integrácie mestskej hromadnej dopravy.", "vector": [2, 2, 2, null, 2, -2, -2, null, null, null, null, null], "sources": [{"label": "Bystricoviny.sk – Lunter obhajuje post župana", "url": "https://www.bystricoviny.sk/spravy/banskobystricky-samospravny-kraj-ma-dalsieho-kandidata-na-zupana-post-obhajuje-sucasny-predseda-ondrej-lunter/"}, {"label": "Pravda.sk – Lunter bude opäť kandidovať", "url": "https://spravy.pravda.sk/domace/clanok/804059-ondrej-lunter-banskobystricky-samospravny-kraj-volby-zupa-kandidatura/"}, {"label": "Teraz.sk – program predsedu BBSK", "url": "https://www.teraz.sk/regiony/predseda-banskobystrickeho-kraja-predst/973221-clanok.html"}, {"label": "Parlamentné listy – Lunter predstavil volebný program", "url": "https://www.parlamentnelisty.sk/spravy/667552/banskobystricky-zupan-ondrej-lunter-predstavil-volebny-program-a-odstartoval-kampan-video-foto/"}]}, {"name": "Marek Kotleba", "initials": "MK", "age": 39, "role": "poslanec Národnej rady SR (brat straníckeho predsedu Mariana Kotlebu)", "city": "Banská Bystrica", "coalition": "Kotlebovci – Ľudová strana Naše Slovensko", "bio": "Poslanec NR SR za ĽSNS, brat dlhoročného predsedu strany a bývalého predsedu BBSK (2013 – 2017) Mariana Kotlebu, ktorý sa v roku 2026 uchádza o post primátora Banskej Bystrice. Marek Kotleba je oficiálne registrovaný kandidát strany na predsedu BBSK; kampaň strany kladie dôraz na financie kraja a zefektívnenie dopravy, ĽSNS dlhodobo presadzuje národnú suverenitu a odmieta politiku menšinových a proeurópskych strán.", "vector": [-2, null, 1, null, -2, 2, -2, 2, null, null, null, null], "sources": [{"label": "Denník Prospekt – Kotleba sa vracia do boja o Banskú Bystricu", "url": "https://dennikprospekt.sk/politika/kotleba-sa-vracia-do-boja-o-bansku-bystricu-kandiduje-na-zupana-aj-primatora"}, {"label": "Denník N – Marian Kotleba kandidatúra", "url": "https://dennikn.sk/minuta/5535655"}, {"label": "NRSR – profil poslanca Marek Kotleba", "url": "https://www.nrsr.sk/web/Page.aspx?sid=poslanci/poslanec&PoslanecID=1027&CisObdobia=8"}, {"label": "Vidiná – zoznam zaregistrovaných kandidátov pre voľby predsedu BBSK", "url": "https://www.vidina.sk/m/obec-2/volby-do-organov-samospravnych-krajov/zoznam-zaregistrovanych-kandidatov-pre-volby-predsedu-banskobystrickeho-samospravneho-kraja/"}]}, {"name": "Rudolf Huliak", "initials": "RH", "age": 47, "role": "podnikateľ, poslanec NR SR / bývalý štátny tajomník MŽP SR", "city": "Očová", "coalition": "Národná koalícia / nezávislí kandidáti", "bio": "Podnikateľ z Očovej, dlhodobo pôsobiaci v národno-konzervatívnom politickom prúde, bol štátnym tajomníkom na Ministerstve životného prostredia SR. Je známy vyhranenými výrokmi proti tzv. gender agende a presadzovaním tradičných hodnôt, ako aj kritikou environmentálnych obmedzení voči ťažbe a lesnému hospodárstvu. Kandiduje za koalíciu Národná koalícia / nezávislí kandidáti.", "vector": [-1, null, null, -2, 1, -2, 2, null, 2, null, null, null], "sources": [{"label": "Wikipedia (EN) – Rudolf Huliak", "url": "https://en.wikipedia.org/wiki/Rudolf_Huliak"}, {"label": "Zoznam zaregistrovaných kandidátov – Trnavá Hora", "url": "https://www.trnavahora.sk/oznamy/zoznam-zaregistrovanych-kandidatov-pre-volby-predsedu-bbsk-a-pre-volby-do-zastupitelstva-bbsk.html"}]}, {"name": "Marek Modranský", "initials": "MM", "age": 43, "role": "dopravný expert, poslanec MsZ Banská Bystrica", "city": "Banská Bystrica", "coalition": "nezávislý kandidát", "bio": "Dopravný expert a poslanec mestského zastupiteľstva v Banskej Bystrici, kandidoval ako nezávislý aj v roku 2022. Profiluje sa najmä témou dopravy a mobility v kraji, iné časti jeho programu neboli v dostupných zdrojoch bližšie špecifikované.", "vector": [-1, null, 2, null, null, null, null, null, null, null, null, null], "sources": [{"label": "SME – profil Marek Modranský", "url": "https://www.sme.sk/os/166111/marek-modransky"}, {"label": "Bystricoviny.sk – kto kandiduje na predsedu BBSK a krajských poslancov", "url": "https://www.bystricoviny.sk/spravy/kto-kandiduje-na-primatora-banskej-bystrice-poslancov-msz-predsedu-bbsk-a-krajskych-poslancov/"}]}, {"name": "Michal Albert", "initials": "MA", "age": 40, "role": "moderátor", "city": "Banská Bystrica", "coalition": "Komunistická strana Slovenska (KSS)", "bio": "Moderátor z Banskej Bystrice, kandidát Komunistickej strany Slovenska. KSS dlhodobo presadzuje výrazné posilnenie sociálneho štátu a bezplatného zdravotníctva, kritizuje členstvo v EÚ/NATO a historicky sa stavia proti vyšším územným celkom ako zbytočnej byrokratickej nadstavbe nad okresným systémom.", "vector": [-1, 2, null, null, null, 1, 1, -1, null, null, 2, null], "sources": [{"label": "Zoznam zaregistrovaných kandidátov – Vidiná", "url": "https://www.vidina.sk/m/obec-2/volby-do-organov-samospravnych-krajov/zoznam-zaregistrovanych-kandidatov-pre-volby-predsedu-banskobystrickeho-samospravneho-kraja/"}]}, {"name": "Maroš Čupka", "initials": "MČ", "age": 26, "role": "študent vysokej školy", "city": "Banská Bystrica", "coalition": "Socialisti.sk", "bio": "Najmladší kandidát na predsedu BBSK, študent vysokej školy z Banskej Bystrice za mladú ľavicovú stranu Socialisti.sk. Strana sa profiluje dôrazom na sociálny štát, boj proti korupcii, práva menšín a environmentálnu politiku.", "vector": [-1, 2, null, 1, null, 2, -1, -1, -2, 2, 2, -2], "sources": [{"label": "Zoznam zaregistrovaných kandidátov – Vidiná", "url": "https://www.vidina.sk/m/obec-2/volby-do-organov-samospravnych-krajov/zoznam-zaregistrovanych-kandidatov-pre-volby-predsedu-banskobystrickeho-samospravneho-kraja/"}]}, {"name": "Jozef Sásik", "initials": "JS", "age": 64, "role": "katolícky politológ", "city": "Banská Bystrica", "coalition": "Slovenská ľudová strana Andreja Hlinku (SĽS)", "bio": "Katolícky politológ z Banskej Bystrice, dlhoročný predseda SĽS Andreja Hlinka v Banskej Bystrici, v minulosti líder kandidátky strany do NR SR aj do Európskeho parlamentu. Strana sa hlási ku klerikálno-národnému konzervativizmu, silnému dôrazu na kresťanské hodnoty a národnú suverenitu.", "vector": [-1, null, null, null, null, -1, 2, null, 2, null, null, 1], "sources": [{"label": "Zoznam zaregistrovaných kandidátov – Vidiná", "url": "https://www.vidina.sk/m/obec-2/volby-do-organov-samospravnych-krajov/zoznam-zaregistrovanych-kandidatov-pre-volby-predsedu-banskobystrickeho-samospravneho-kraja/"}]}]}, "obvody": [{"number": 1, "seats": null, "areaLabel": "okres Banská Bystrica", "blocs": [], "independents": []}, {"number": 2, "seats": null, "areaLabel": "okres Banská Štiavnica", "blocs": [], "independents": []}, {"number": 3, "seats": null, "areaLabel": "okres Brezno", "blocs": [], "independents": []}, {"number": 4, "seats": 3, "areaLabel": "okres Detva", "blocs": [], "independents": []}, {"number": 5, "seats": 2, "areaLabel": "okres Krupina", "blocs": [], "independents": []}, {"number": 6, "seats": null, "areaLabel": "okres Lučenec", "blocs": [], "independents": []}, {"number": 7, "seats": null, "areaLabel": "okres Poltár", "blocs": [], "independents": []}, {"number": 8, "seats": null, "areaLabel": "okres Revúca", "blocs": [], "independents": []}, {"number": 9, "seats": null, "areaLabel": "okres Rimavská Sobota", "blocs": [], "independents": []}, {"number": 10, "seats": null, "areaLabel": "okres Veľký Krtíš", "blocs": [], "independents": []}, {"number": 11, "seats": 5, "areaLabel": "okres Zvolen", "blocs": [], "independents": []}, {"number": 12, "seats": null, "areaLabel": "okres Žarnovica", "blocs": [], "independents": []}, {"number": 13, "seats": null, "areaLabel": "okres Žiar nad Hronom", "blocs": [], "independents": []}]}, "bratislavsky": {"krajId": "bratislavsky", "krajName": "Bratislavský kraj", "chair": {"candidates": [{"name": "Juraj Droba", "initials": "JD", "age": 55, "role": "predseda Bratislavského samosprávneho kraja (úradujúci)", "city": "Bratislava - Staré Mesto", "coalition": "Sloboda a Solidarita, Progresívne Slovensko, Demokrati, Team Bratislava", "bio": "Úradujúci župan obhajuje mandát na druhé obdobie. Ako priority uvádza zdravotníctvo (výrazne vyšší podiel rozpočtu BSK), dôsledné zavedenie Integrovaného dopravného systému a prechod z autodopravy (73 % dopravy) na koľajovú verejnú dopravu, pokračovanie investícií do školstva, sociálnych služieb, kultúry a pamiatok.", "vector": [2, 2, 1, 1, null, 1, -2, -2, -1, 2, 1, 1], "sources": [{"label": "Droba.sk - volebný program", "url": "https://www.droba.sk/volebny-program/"}, {"label": "Bratislavskykraj.sk - odpočet priorít 2022-2026", "url": "https://bratislavskykraj.sk/zupan-juraj-droba-predstavil-odpocet-priorit-2022-2026-zmodernizovane-skolstvo-a-socialne-sluzby-kvalitnejsie-cesty-obnovene-pamiatky/"}, {"label": "ta3.com - kandidáti na predsedu BSK", "url": "https://www.ta3.com/clanok/1067999/bratislavsky-kraj-pozna-kandidatov-na-zupana-o-kreslo-zabojuje-sedem-uchadzacov-vratane-uradujuceho-drobu"}, {"label": "Bratislavský večerník - Chcem dokončiť rozbehnuté projekty", "url": "https://www.bratislavskyvecernik.sk/2026/07/20/juraj-droba-chcem-dokoncit-rozbehnute-projekty"}]}, {"name": "Rastislav Gajarský", "initials": "RG", "age": 48, "role": "prednosta okresného úradu", "city": "Bratislava - Ružinov", "coalition": "Smer - sociálna demokracia, Hlas - sociálna demokracia, Slovenská národná strana", "bio": "Kandidát koalície vládnych strán predstavil tri hlavné priority: bezplatnú regionálnu autobusovú dopravu, presun kompetencií kraja bližšie k mestám a obciam, a posilnenie odborného stredného školstva vrátane vlastného vzdelávacieho modulu 'Moje remeslo, môj biznis' na podporu podnikavosti študentov.", "vector": [-1, null, 1, null, -1, -1, 1, -1, 1, null, null, null], "sources": [{"label": "SITA - Gajarský predstavil tri priority", "url": "https://sita.sk/kandidat-na-predsedu-bratislavskeho-samospravneho-kraja-gajarsky-predstavil-tri-hlavne-priority/"}, {"label": "Teraz.sk - bezplatné autobusy a presun kompetencií", "url": "https://www.teraz.sk/regiony/gajarsky-chce-bezplatne-autobusy-i-pre/990384-clanok.html"}]}, {"name": "Zuzana Krajčovičová", "initials": "ZK", "age": 39, "role": "konateľka, expertka na životné prostredie", "city": "Bratislava - Staré Mesto", "coalition": "Právo na pravdu, Starostovia a nezávislí kandidáti", "bio": "Kandidátka staviaca program na štyroch prioritách: zdravie ľudí nad biznisom (riešenie environmentálnych záťaží a znečistenia, kraj bez veterných parkov a spaľovní odpadu), bezpečné školstvo, dôstojnosť pre všetky generácie (sociálne služby) a funkčná doprava vrátane 24-hodinových lekární vo všetkých okresných mestách kraja (Pezinok, Senec, Malacky).", "vector": [-1, 2, 1, 2, null, null, null, -1, 1, 1, 2, -1], "sources": [{"label": "SITA - Krajčovičová oznámila kandidatúru a priority", "url": "https://sita.sk/zuzana-krajcovicova-oznamila-svoju-kandidaturu-na-predsednicku-bsk-a-predstavila-aj-svoje-hlavne-priority-foto/"}, {"label": "Teraz.sk - Krajčovičová predstavila víziu", "url": "https://www.teraz.sk/spravy/kandidatka-na-sefku-bsk-z-krajcovi/947135-clanok.html"}, {"label": "Bratislavský večerník - tím pre voľby do BSK", "url": "https://www.bratislavskyvecernik.sk/2026/03/10/zuzana-krajcovicova-predstavila-tim-pre-volby-do-bsk-hovori-o-bezpecnosti-skolach-aj-doprave"}]}, {"name": "Ján Chalabala", "initials": "JC", "age": 62, "role": "výsluhový dôchodca", "city": "Bratislava", "coalition": "Komunistická strana Slovenska (KSS)", "bio": "Kandidát KSS. Konkrétny regionálny program sa v dostupných zdrojoch nepodarilo dohľadať; časť pozícií je odvodená z celoštátneho programu KSS (dôraz na verejné zdravotníctvo a sociálny štát, odmietanie prehlbovania vojensko-politickej integrácie do EÚ/NATO).", "vector": [-1, 2, null, null, 1, 2, null, -2, 1, 2, null, null], "sources": [{"label": "ta3.com - o post šéfa BSK zabojuje 7 kandidátov", "url": "https://www.ta3.com/clanok/1069383/o-post-sefa-bratislavskeho-kraja-zabojuje-sedem-kandidatov-o-kresla-poslancov-sa-zas-uchadza-277-ludi"}, {"label": "Bratislavskykraj.sk - 7 zaregistrovaných kandidátov", "url": "https://bratislavskykraj.sk/na-post-predsedu-bratislavskeho-kraja-bolo-zaregistrovanych-7-kandidatov-za-poslancov-kandiduje-277-uchadzacov/"}]}, {"name": "Ľudovít Líška", "initials": "ĽL", "age": 66, "role": "podnikateľ", "city": "Bratislava", "coalition": "Jednota Slovanov", "bio": "Kandidát strany Jednota Slovanov presadzuje panslovanskú spoluprácu a blízke vzťahy s Ruskom, národnú suverenitu a kritický postoj voči EÚ a NATO. Iné konkrétne krajské priority sa nepodarilo dohľadať.", "vector": [-1, null, null, null, null, 2, null, null, null, null, null, null], "sources": [{"label": "ta3.com - o post šéfa BSK zabojuje 7 kandidátov", "url": "https://www.ta3.com/clanok/1069383/o-post-sefa-bratislavskeho-kraja-zabojuje-sedem-kandidatov-o-kresla-poslancov-sa-zas-uchadza-277-ludi"}]}, {"name": "Peter Poláček", "initials": "PP", "age": 58, "role": "forenzný špecialista", "city": "Bratislava - Staré Mesto", "coalition": "SLOVEXIT", "bio": "Kandidát strany SLOVEXIT, ktorej celoštátnym cieľom je vystúpenie Slovenska z EÚ. Iné konkrétne krajské priority sa nepodarilo dohľadať.", "vector": [-1, null, null, null, null, 2, null, null, null, null, null, null], "sources": [{"label": "ta3.com - o post šéfa BSK zabojuje 7 kandidátov", "url": "https://www.ta3.com/clanok/1069383/o-post-sefa-bratislavskeho-kraja-zabojuje-sedem-kandidatov-o-kresla-poslancov-sa-zas-uchadza-277-ludi"}]}, {"name": "Dávid Staruch", "initials": "DS", "age": 42, "role": "IT špecialista / dátový inžinier, bývalý poslanec MČ Ružinov", "city": "Bratislava - Ružinov", "coalition": "nezávislý kandidát", "bio": "Bývalý poslanec Ružinova a zakladajúci člen SaS kandiduje ako nezávislý. Program zameriava na zlepšenie zdravotníctva, reformu integrovaného dopravného systému a budovanie nových železničných koridorov pre osobnú dopravu, rozvoj regiónu prostredníctvom malých priemyselných parkov a zmeny v územnom plánovaní. Zdôrazňuje, že verejná funkcia nemá slúžiť na osobný prospech.", "vector": [-1, 2, 1, null, null, null, null, -1, null, null, null, -1], "sources": [{"label": "SME - Droba má ďalšieho vyzývateľa (Staruch)", "url": "https://www.sme.sk/bratislava/c/droba-ma-dalsieho-vyzyvatela-zupanom-chce-byt-aj-byvaly-ruzinovsky-poslanec-staruch"}, {"label": "Bratislavské noviny - župné voľby, Staruch", "url": "https://www.bratislavskenoviny.sk/komunalne-volby-2026/88927-zupne-volby-na-sefa-bsk-chce-kandidovat-aj-byvaly-poslanec-ruzinova-d-staruch"}, {"label": "Humanisti.sk - Staruch plánuje vystriedať Drobu", "url": "https://www.humanisti.sk/2026/06/16/david-staruch-planuje-vystriedat-drobu-na-cele-bratislavskeho-kraja/"}, {"label": "Bratislavský večerník - Staruch, verejná funkcia", "url": "https://www.bratislavskyvecernik.sk/2026/07/28/david-staruch-verejna-funkcia-nema-byt-sposobom-ako-si-clovek-zabezpeci-svoj-osobny-prospech"}]}]}, "obvody": [{"number": 1, "seats": 4, "areaLabel": "Bratislava - Staré Mesto", "blocs": [], "independents": []}, {"number": 2, "seats": 6, "areaLabel": "Bratislava - Ružinov", "blocs": [], "independents": []}, {"number": 3, "seats": null, "areaLabel": "Bratislava - Vrakuňa", "blocs": [], "independents": []}, {"number": 4, "seats": null, "areaLabel": "Bratislava - Podunajské Biskupice", "blocs": [], "independents": []}, {"number": 5, "seats": 3, "areaLabel": "Bratislava - Nové Mesto", "blocs": [], "independents": []}, {"number": 6, "seats": 2, "areaLabel": "Bratislava - Rača a Vajnory", "blocs": [], "independents": []}, {"number": 7, "seats": 3, "areaLabel": "Bratislava - Karlova Ves", "blocs": [], "independents": []}, {"number": 8, "seats": null, "areaLabel": "Bratislava - Devín a Devínska Nová Ves", "blocs": [], "independents": []}, {"number": 9, "seats": null, "areaLabel": "Bratislava - Dúbravka", "blocs": [], "independents": []}, {"number": 10, "seats": null, "areaLabel": "Bratislava - Lamač a Záhorská Bystrica", "blocs": [], "independents": []}, {"number": 11, "seats": 9, "areaLabel": "Bratislava - Petržalka, Čunovo, Jarovce, Rusovce", "blocs": [], "independents": []}, {"number": 15, "seats": 1, "areaLabel": "okres Malacky: Jablonové, Kuchyňa, Lozorno, Pernek, Plavecké Podhradie, Plavecký Mikuláš, Rohožník, Sološnica", "blocs": [], "independents": ["Mária Matiko Štarková, Mgr. – politologička/občianska aktivistka, 37 r.", "Peter Rzyman, Ing. – 57 r.", "Jana Sheppard – 51 r.", "Roman Šterbák, RNDr. – 43 r.", "Peter Švaral, Mgr. – 47 r."]}, {"number": 16, "seats": 1, "areaLabel": "okres Malacky: Borinka, Marianka, Stupava", "blocs": [{"name": "HLAS - sociálna demokracia", "note": "Súčasť vládnej koalície kandidáta na predsedu R. Gajarského (Smer-Hlas-SNS); v tomto obvode kandiduje samostatne za HLAS-SD, preto je použitý rovnaký vektor.", "vector": [-1, null, 1, null, -1, -1, 1, -1, 1, null, null, null], "roster": ["Ján Rigler, Ing. – výsluhový dôchodca, Stupava, 48 r."]}, {"name": "Kotlebovci - Ľudová strana Naše Slovensko (ĽSNS)", "note": "Bez vlastného kandidáta na predsedu BSK v tomto kole; vektor odvodený z dlhodobo známeho celoštátneho programu ĽSNS (silný euroskepticizmus, odmietanie EÚ/NATO integrácie, tvrdý postoj k menšinám, dôraz na tradičné hodnoty).", "vector": [-2, null, null, null, null, -2, 2, 1, 2, null, null, null], "roster": ["Martina Janovcová – podnikateľka, Borinka, 42 r."]}, {"name": "NOVA a ďalšie strany", "note": "Strana NOVA nemá v tomto kole vlastného kandidáta na predsedu BSK; konkrétny krajský program sa nepodarilo dohľadať, vektor preto nie je priraďovaný (chýbajúce dáta).", "vector": [null, null, null, null, null, null, null, null, null, null, null, null], "roster": ["Juraj Lím – podnikateľ, herec, moderátor, Marianka, 51 r."]}, {"name": "Strana obcí a miest - SOM SLOVENSKO", "note": "Strana zastupujúca primárne starostov a primátorov; konkrétny program k týmto 12 otázkam sa nepodarilo dohľadať.", "vector": [null, null, null, null, null, null, null, null, null, null, null, null], "roster": ["Martin Smeja, Ing., PhD. – vedúci centra vody, Stupava, 40 r."]}], "independents": ["Hana Haldová, Ing. – hlavná radkyňa, Stupava, 53 r.", "Milan Peschl – živnostník, Stupava, 54 r."]}]}, "kosicky": {"krajId": "kosicky", "krajName": "Košický kraj", "chair": {"candidates": [{"name": "Rastislav Trnka", "initials": "RT", "age": 42, "role": "súčasný predseda KSK (ekonóm, manažér)", "city": "Košice", "coalition": "nezávislý (podpora Maďarskej aliancie)", "bio": "Predseda Košického samosprávneho kraja od roku 2017 (obhajuje už druhé/tretie funkčné obdobie), pôvodným povolaním ekonóm, predtým poslanec mestskej časti Košice – Staré Mesto. Kandiduje ako nezávislý so sloganom „S Rasťom kraj rastie“, obhajuje doterajšie investície do ciest a mostov, dopravy, zdravotníctva, sociálnych služieb, kultúry a cezhraničnej spolupráce. Získal podporu Maďarskej aliancie (strana zastupujúca maďarskú menšinu).", "vector": [2, 1, 1, null, 1, 2, -1, -2, null, null, 1, 2], "sources": [{"label": "teraz.sk – Trnka obhajuje post predsedu KSK", "url": "https://www.teraz.sk/kosicky-kraj/volbyvuc26-post-predsedu-ksk-chce-vo/967007-clanok.html"}, {"label": "Korzár SME – Maďarská aliancia podporila Trnku", "url": "https://korzar.sme.sk/kosice/c/madarska-aliancia-vyjadrila-podporu-rastislavovi-trnkovi-v-boji-o-post-predsedu-ksk"}, {"label": "Wikipédia – Rastislav Trnka", "url": "https://sk.wikipedia.org/wiki/Rastislav_Trnka"}]}, {"name": "Marián Porvažník", "initials": "MP", "age": null, "role": "kandidát koalície PS a partnerov", "city": "neuvedené", "coalition": "PS, Hnutie Slovensko, SaS, KDH, Demokrati, Za ľudí, OKS, DS-ODS", "bio": "Kandidát širokej občiansko-demokratickej koalície (PS, KDH, SaS, Hnutie Slovensko, Demokrati, Za ľudí, OKS, DS-ODS) na predsedu KSK. Presadzuje prepojenie Košíc a Prešova do jednej metropolitnej oblasti, osobitný program pre maďarskú menšinu a rozvoj juhu kraja (funkcia podpredsedu pre rozvoj juhu, posilnenie dvojjazyčnosti, garancia stredoškolského vzdelávania v maďarčine), ekonomický rozvoj a kvalitné verejné služby.", "vector": [-1, 1, 2, 1, 1, 2, -2, -2, 1, 2, 1, -1], "sources": [{"label": "Progresívne Slovensko – Porvažník kandidátom PS", "url": "https://progresivne.sk/kandidatom-ps-na-predsedu-kosickeho-samospravneho-kraja-bude-marian-porvaznik/"}, {"label": "teraz.sk – program pre maďarskú menšinu", "url": "https://www.teraz.sk/regiony/kandidat-m-porvaznik-predstavil-prog/984496-clanok.html"}, {"label": "Pravda.sk – metropolitná oblasť Košice–Prešov", "url": "https://www.pravda.sk/spravy/regiony/clanok/814665-kandidat-na-predsedu-ksk-porvaznik-som-pripraveny-pozerat-sa-aj-za-hranice-zupy-treba-vybudovat-metropolitnu-oblasttreba"}]}, {"name": "Igor Šimko", "initials": "IŠ", "age": null, "role": "poslanec NR SR, vládny splnomocnenec pre elimináciu regionálnych rozdielov", "city": "neuvedené", "coalition": "Hlas-SD, Smer-SD, Republika, Právo na pravdu, SNS, Strana vidieka, Starostovia a nezávislí kandidáti, Bratia Slovenska", "bio": "Poslanec Národnej rady SR a vládny splnomocnenec pre elimináciu regionálnych rozdielov a Plán obnovy východného Slovenska. Kandiduje s podporou širokej ľavicovo-národnej koalície ôsmich strán (spojenie Hlasu, Smeru, SNS, Republiky a ďalších), ktorú osobne podporil premiér Fico. Program „Kraj podľa ľudí“ postavil na verejnom prieskume potrieb, priority: platení opatrovatelia v zariadeniach sociálnej starostlivosti, stav polikliník, vybavenosť škôl a škôlok, doprava, cestovný ruch.", "vector": [-1, 2, 1, null, 1, -1, 1, -1, 1, null, 2, 0], "sources": [{"label": "ta3 – Fico podporil Šimka", "url": "https://www.ta3.com/clanok/1068701/osem-stran-za-jednym-kandidatom-fico-v-cani-podporil-igora-simka-v-boji-o-kosicky-samospravny-kraj"}, {"label": "strana-hlas.sk – kandidátom Igor Šimko", "url": "https://strana-hlas.sk/aktuality/michaela-eliasova/kandidatom-na-predsedu-kosickeho-samospravneho-kraja-bude-igor-simko/"}, {"label": "igorsimko.sk – program", "url": "https://igorsimko.sk/program/"}, {"label": "Korzár SME – Hlas a Smer sa spájajú s Republikou", "url": "https://korzar.sme.sk/kosice/c/hlas-a-smer-sa-v-kosickom-kraji-spajaju-s-republikou-podporu-krajnej-pravice-si-simko-vazi"}]}, {"name": "Tibor Géci", "initials": "TG", "age": null, "role": "predstaviteľ hnutia Jednota Slovanov", "city": "neuvedené", "coalition": "Jednota Slovanov", "bio": "Kandidát panslovanského hnutia Jednota Slovanov, ktoré sa deklaruje ako úplne odlišné od zabehnutých strán politického spektra a stavia na myšlienke jednoty slovanských národov. Konkrétny regionálny program pre KSK sa v dostupných zdrojoch nepodarilo overiť – k väčšine otázok nie sú k dispozícii doložené vyjadrenia.", "vector": [-1, null, null, null, null, null, null, null, null, null, null, null], "sources": [{"label": "Spišiakoviny – oficiálny zoznam šiestich kandidátov", "url": "https://www.spisiakoviny.sk/2026/08/30/kto-zabojuje-o-post-zupana-kosickeho-kraja-tu-je-oficialny-zoznam-siestich-kandidatov/"}, {"label": "Jednota Slovanov – oficiálna stránka hnutia", "url": "https://jednotaslovanov.sk/"}]}, {"name": "Džemal Kodrazi", "initials": "DK", "age": null, "role": "podnikateľ, predseda strany Princíp", "city": "Košice", "coalition": "Princíp / nezávislý", "bio": "Košický podnikateľ a predseda strany Princíp, opakovaný kandidát (kandidoval už v komunálnych voľbách 2018 a na predsedu KSK v roku 2022). V roku 2026 kandiduje znovu, tvrdí že „KSK stagnuje a upadá“ a chce do verejného priestoru vrátiť pokoj, úctu, čestnosť a ľudskosť. Priority: výstavba diaľnice k hraniciam s Ukrajinou a Poľskom, tvorba pracovných miest, zvýšenie úrovne sociálnej starostlivosti, zdravotníctva a školstva; venuje sa aj téme napätých vzťahov medzi majoritou a Rómami.", "vector": [-2, 1, 2, null, 1, 1, null, -1, null, 1, 1, -1], "sources": [{"label": "teraz.sk – Kodrazi: KSK stagnuje a upadá", "url": "https://www.teraz.sk/regionalne-a-komunalne-kosice-/dz-kodrazi-ksk-stagnuje-a-upada-vy/669147-clanok.html"}, {"label": "Regióny.sk – Kodrazi chce riešiť nevraživosť voči Rómom", "url": "https://kosice.zoznam.sk/novy-kandidat-na-predsedu-kosickeho-kraja-dzemal-kodrazi-chce-riesit-nevrazivost-majority-voci-romom/"}, {"label": "Pravda.sk – Kodrazi sa bude uchádzať o post predsedu KSK", "url": "https://spravy.pravda.sk/regiony/clanok/797069-o-post-predsedu-kosickeho-samospravneho-kraja-sa-bude-uchadzat-aj-dzemal-kodrazi/"}]}, {"name": "Monika Sofiya Soročinová", "initials": "MS", "age": null, "role": "právnička, mediátorka", "city": "Klokočov", "coalition": "nezávislá kandidátka", "bio": "Právnička z Klokočova, jediná žena medzi šiestimi kandidátmi na predsedu KSK. Kandiduje ako nezávislá, bez podpory politických strán, oligarchov či finančných skupín. Za hlavné problémy kraja označuje nedobudovanú infraštruktúru, zanedbané školy, chýbajúce športoviská, nedostatočnú podporu seniorov, chátrajúce kultúrne dedičstvo, zlý stav ciest a mostov a vysokú nezamestnanosť.", "vector": [-1, null, 2, null, null, null, null, null, null, 1, 1, -2], "sources": [{"label": "teraz.sk – Soročinová: problémom KSK je nedobudovaná infraštruktúra", "url": "https://www.teraz.sk/regiony/m-s-sorocinova-problemom-ksk-je-ne/669168-clanok.html"}, {"label": "Spišiakoviny – oficiálny zoznam šiestich kandidátov", "url": "https://www.spisiakoviny.sk/2026/08/30/kto-zabojuje-o-post-zupana-kosickeho-kraja-tu-je-oficialny-zoznam-siestich-kandidatov/"}]}]}, "obvody": []}, "nitriansky": {"krajId": "nitriansky", "krajName": "Nitriansky kraj", "chair": {"candidates": [{"name": "Branislav Becík", "initials": "BB", "age": null, "role": "súčasný predseda Nitrianskeho samosprávneho kraja (obhajuje mandát), z poľnohospodárskej rodiny", "city": "Nitriansky kraj", "coalition": "Hlas-SD, Smer-SD, SNS, Republika, Právo na pravdu, Bratia Slovenska + nezávislí z juhu Slovenska", "bio": "Súčasný župan NSK oznámil v auguste 2026 kandidatúru na tretie obdobie. Kampaň stavia na agrárnom charaktere kraja (jazdí za voličmi na traktore), zdôrazňuje pokračovanie investícií do dopravy, sociálnych služieb a zdravotníctva a podporu poľnohospodárov. Podporujú ho aj nezávislí kandidáti z juhu kraja okolo primátora Kolárova Bélu Halásza.", "vector": [2, 1, 2, null, 2, 1, 1, -2, 1, null, 1, 2], "sources": [{"label": "ta3.com", "url": "https://www.ta3.com/clanok/1067877/branislav-becik-chce-zostat-sefom-nitrianskeho-kraja-ohlasil-dalsiu-kandidaturu-podporili-ho-smer-hlas-aj-sns"}, {"label": "pravda.sk", "url": "https://www.pravda.sk/spravy/regionalne-volby-2026/clanok/2029773-becik-ide-opat-do-boja-o-nitriansky-kraj-kampan-chce-viest-na-traktore-a-ukazal-kto-stoji-za-nim"}, {"label": "nitralive.sk", "url": "https://www.nitralive.sk/spravy/67414-nitriansky-samospravny-kraj-planuje-v-roku-2026-viacere-investicie"}]}, {"name": "Tibor Csenger", "initials": "TC", "age": 61, "role": "podpredseda Nitrianskeho samosprávneho kraja (vicežupan za obvod Levice), mestský poslanec v Želiezovciach, podpredseda Maďarskej aliancie", "city": "Želiezovce", "coalition": "Maďarská aliancia", "bio": "Skúsený regionálny politik spojený s maďarským politickým prúdom od čias SMK-MKP, krajským poslancom od roku 2013. V roku 2022 skončil tretí s vyše 35 000 hlasmi. Ako priority uvádza opravy ciest a mostov, rozvoj vidieka a dopravný koridor Komárno – Topoľčany; dlhodobo sa venuje juhu kraja a otázkam národnostných menšín.", "vector": [0, null, 2, null, 1, 2, -2, -2, null, null, null, 2], "sources": [{"label": "teraz.sk", "url": "https://www.teraz.sk/regiony/o-post-predsedu-nitrianskeho-kraja-sa-bu/980022-clanok.html"}, {"label": "teraz.sk (2022 program)", "url": "https://www.teraz.sk/nitriansky-kraj/volby2022-t-csenger-top-prioritou-v/668779-clanok.html"}]}, {"name": "Henrich Varga", "initials": "HV", "age": null, "role": "krajský poslanec, bývalý poradca primátora Nitry Mareka Hattasa, dlhoročná kariéra v reklamných agentúrach (Bratislava, Praha), líder regionálnej strany Tím Kraj Nitra", "city": "Nitra", "coalition": "Tím Kraj Nitra + PS, SaS, KDH, Hnutie Slovensko, Demokrati, Občianska konzervatívna strana, Maďarské fórum", "bio": "Kandidatúru ohlásil ako jeden z prvých vo februári 2026 a postupne okolo seba zjednotil širokú demokratickú opozíciu siedmich strán. Kritizuje Becíka ako 'predĺženú ruku Fica' a stavia kampaň na hesle zmeny, spolupráce a transparentnosti v kraji.", "vector": [-2, null, null, null, null, 2, -2, -2, null, 2, null, -1], "sources": [{"label": "dennikn.sk", "url": "https://dennikn.sk/5464256/kandidat-na-nitrianskeho-zupana-varga-becik-je-len-predlzenou-rukou-fica/"}, {"label": "teraz.sk", "url": "https://www.teraz.sk/regiony/opozicia-podporila-kandidaturu-h-varg/976431-clanok.html"}, {"label": "24hod.sk", "url": "https://www.24hod.sk/sedem-opozicnych-stran-podporilo-kandidaturu-vargu-nitriansky-kraj-potrebuje-zmenu-video-foto-cl828237.html"}]}, {"name": "Róbert Švec", "initials": "RŠ", "age": 49, "role": "politológ (Trnavská univerzita), predseda Slovenského hnutia obrody (SHO)", "city": "Nitra", "coalition": "Slovenské hnutie obrody", "bio": "Dlhoročný krajne pravicový aktivista, opakovane kandidoval na primátora Nitry (2002, 2010) aj na prezidenta SR (2019, 0,3 %). Program SHO stojí na piatich bodoch: vystúpenie z EÚ a NATO, odmietnutie 'multikulti a LGBTI agendy' a obnovenie slovenskej koruny.", "vector": [-1, null, null, null, null, -2, 2, null, 2, null, null, null], "sources": [{"label": "standard.sk", "url": "https://standard.sk/1291485/svec-bude-kandidovat-na-nitrianskeho-zupana"}, {"label": "sho.sk", "url": "https://sho.sk/volby-2026-robert-svec-kandiduje-na-post-predsedu-nitrianskeho-samospravneho-kraja/"}]}, {"name": "Erik Blaško", "initials": "EB", "age": null, "role": "kandidát na kandidátnej listine strany Jednota Slovanov", "city": "neuvedené", "coalition": "Jednota Slovanov", "bio": "Osobný program nebol dohľadaný; vektor je odvodený len z celoštátneho programu strany Jednota Slovanov (založil ju Peter Marček), ktorá presadzuje vystúpenie SR z EÚ a NATO, obnovenie vzťahov s Ruskom a vstup do BRICS.", "vector": [null, null, null, null, null, null, 2, null, 1, null, null, null], "sources": [{"label": "jednotaslovanov.sk", "url": "https://jednotaslovanov.sk/nase-slovensko/"}, {"label": "teraz.sk (kandidátna listina)", "url": "https://www.teraz.sk/regiony/o-post-predsedu-nitrianskeho-kraja-sa-uc/990335-clanok.html"}]}, {"name": "Karol Suchan", "initials": "KS", "age": null, "role": "kandidát strany SLOVEXIT", "city": "neuvedené", "coalition": "SLOVEXIT", "bio": "Osobný program nebol dohľadaný; vektor je odvodený len z celoštátneho programu strany SLOVEXIT (predseda Martin Beluský, bývalý poslanec ĽSNS), ktorej ústrednou požiadavkou je vystúpenie Slovenska z Európskej únie.", "vector": [null, null, null, null, null, null, 2, null, null, null, null, null], "sources": [{"label": "teraz.sk (kandidátna listina)", "url": "https://www.teraz.sk/regiony/o-post-predsedu-nitrianskeho-kraja-sa-uc/990335-clanok.html"}]}, {"name": "Jolana Čuláková", "initials": "JČ", "age": null, "role": "nezávislá kandidátka", "city": "neuvedené", "coalition": "nezávislá", "bio": "Nezávislá kandidátka na predsedu NSK; k dátumu výskumu sa nepodarilo dohľadať žiadny verejne dostupný program ani vyjadrenia, preto zostáva vektor úplne neznámy.", "vector": [null, null, null, null, null, null, null, null, null, null, null, null], "sources": [{"label": "teraz.sk (kandidátna listina)", "url": "https://www.teraz.sk/regiony/o-post-predsedu-nitrianskeho-kraja-sa-uc/990335-clanok.html"}]}]}, "obvody": []}, "presovsky": {"krajId": "presovsky", "krajName": "Prešovský kraj", "chair": {"candidates": [{"name": "Milan Majerský", "initials": "MM", "age": null, "role": "poslanec NR SR, predseda hnutia KDH, súčasný predseda PSK (obhajuje 3. funkčné obdobie)", "city": "Prešov", "coalition": "KDH, Hnutie Slovensko, SaS, Za ľudí, Konzervatívci – Kresťanská únia, Progresívne Slovensko", "bio": "Úradujúci predseda PSK (dve funkčné obdobia), kandiduje s podporou širokej proeurópskej koalície. Kľúčové témy: dokončenie diaľnice R4, oprava 500 km ciest a 100 mostov, pokračovanie podpory zdravotníctva a sociálnych služieb, podpora investorov a mladých ľudí (7000 študentov v praxi).", "vector": [2, 1, 2, -1, 1, 1, -2, -2, 1, 1, 1, 2], "sources": [{"label": "KDH.sk – Majerský kandiduje na predsedu PSK", "url": "https://kdh.sk/milan-majersky-kandiduje-na-predsedu-presovskeho-samospravneho-kraja-podme-dalej-za-lepsi-vychod/"}, {"label": "Spravy.Pozri.sk – Majerský o R4 a treťom funkčnom období", "url": "https://spravy.pozri.sk/clanok/majersky-vstupuje-do-boja-o-tretie-funkcne-obdobie-tvrdi-ze-presovsky-kraj-potrebuje-dokoncenie-r4/1611783"}, {"label": "Teraz.sk – Majerský sa bude opäť uchádzať o post predsedu", "url": "https://www.teraz.sk/regiony/milan-majersky-sa-bude-opat-uchadza/982883-clanok.html"}]}, {"name": "Milan Mazurek", "initials": "MM", "age": null, "role": "poslanec Európskeho parlamentu, krajský poslanec PSK, predseda strany Republika (regionálna organizácia)", "city": "Prešov", "coalition": "Republika", "bio": "Europoslanec za Republiku, v minulých krajských voľbách (2022) skončil tretí s vyše 10 % hlasov a získal mandát krajského poslanca. Strana Republika presadzuje národno-konzervatívnu a suverenistickú politiku, kritickú voči EÚ a súčasnému vedeniu kraja.", "vector": [-2, 1, 1, -2, 1, -2, 2, 1, 2, 1, null, -1], "sources": [{"label": "Pravda.sk – Mazurek bude kandidovať za predsedu prešovskej samosprávy", "url": "https://www.pravda.sk/spravy/domace/clanok/792573-milan-mazurek-republika-presovsky-samospravny-kraj"}, {"label": "Prešovak.sk – Mazurek opäť kandiduje na župana PSK", "url": "https://www.presovak.sk/clanky/13003/video-mazurek-ide-znovu-do-boja-o-post-zupana-presovskeho-samospravneho-kraja-v-minulych-volbach-skoncil-treti"}]}, {"name": "Samuel Migaľ", "initials": "SM", "age": null, "role": "minister investícií, regionálneho rozvoja a informatizácie SR (nominant Smer-SD, pôvodne zvolený za Hlas-SD)", "city": "Prešovský kraj", "coalition": "nezávislý kandidát", "bio": "Súčasný minister investícií kandiduje ako nezávislý. Program stavia na trojuholníku práca – bývanie – infraštruktúra: investičné príležitosti v každom okrese, modernizácia zariadení sociálnych služieb, štipendijný program „Zostaň na východe“, dostupné bývanie pre mladé rodiny, učiteľov a zdravotníkov, rozvoj cestovného ruchu (Tatry, Poloniny, Domaša).", "vector": [-1, null, 2, -1, null, null, -1, -1, null, null, 1, -1], "sources": [{"label": "Pravda.sk – Migaľ zabojuje o Prešovský kraj", "url": "https://spravy.pravda.sk/domace/clanok/806219-minister-migal-bude-kandidovat-ako-nezavisly-kandidat-za-presovskeho-zupana/"}, {"label": "Info.sk – Samuel Migaľ ohlásil kandidatúru", "url": "https://www.info.sk/sprava/279163/vychod-nesmie-vymierat-samuel-migal-ohlasil-kandidaturu-na-post-presovskeho-zupana"}]}, {"name": "Judita Laššáková", "initials": "JL", "age": 48, "role": "poslankyňa Európskeho parlamentu, právnička", "city": "pôvodne Nové Zámky, zmenila trvalý pobyt do Prešovského kraja", "coalition": "Smer-SD, Bratia Slovenska", "bio": "Europoslankyňa za Smer-SD, nominovaná Robertom Ficom po tom, čo strana nepodporila M. Mazureka. Program sa zameriava na zdravotníctvo, riešenie problémov marginalizovaných rómskych komunít, investičný dlh, vodu a cesty; zdôrazňuje svoje kontakty na európskej úrovni pre čerpanie eurofondov.", "vector": [-2, 2, 1, -1, 1, 0, 0, -1, 1, 0, 2, 1], "sources": [{"label": "STVR – Súboj o post predsedu Prešovského kraja", "url": "https://spravy.stvr.sk/2026/07/na-post-predsedu-psk-bude-za-stranu-smer-kandidovat-europoslankyna-judita-lassakova/"}, {"label": "Ereport.sk – Laššáková rozhovor", "url": "https://ereport.sk/lassakova-moje-meno-nevytiahli-z-klobuka-struktury-smeru-v-presovskom-kraji-ma-oslovili-uz-pred-rokom"}]}, {"name": "Monika Lešková", "initials": "ML", "age": null, "role": "prednostka Okresného úradu Vranov nad Topľou, učiteľka telesnej výchovy a etiky", "city": "Vranov nad Topľou", "coalition": "SNS", "bio": "Nominantka SNS (predstavil ju predseda strany Andrej Danko), predtým aktívna v politike SNS pred nástupom do funkcie prednostky úradu. Priority: moderné školstvo, zlepšenie zdravotnej starostlivosti a sociálnych služieb, podpora športových klubov, zastavenie odchodu mladých ľudí z regiónu.", "vector": [-1, 1, 1, -1, 1, -2, 2, -1, 2, 0, 1, 0], "sources": [{"label": "Korzár SME – Prednostka úradu, SNS kandidátka", "url": "https://korzar.sme.sk/presov/c/stryko-statny-tajomnik-otec-predseda-v-sns-sefka-okresneho-uradu-je-ich-pribuznou"}, {"label": "Topky.sk – SNS predstavila kandidátov na županov", "url": "https://www.topky.sk/cl/10/9429997/SNS-oznamila-prvych-dvoch-kandidatov-na-predsedov-krajov--O-TIETO-zupanske-kresla-zabojuju"}]}, {"name": "Zoltán Kašo", "initials": "ZK", "age": null, "role": "kandidát, zameriava sa na sociálnu oblasť a rozvoj vidieka", "city": "Prešovský kraj", "coalition": "Starostovia a nezávislí kandidáti (SaNK)", "bio": "Kandiduje za hnutie Starostovia a nezávislí kandidáti. Program: oprava regionálnych ciest, rozvoj sociálnych služieb, podpora mladých rodín, riešenie generačnej chudoby v marginalizovaných rómskych osadách, boj proti nezamestnanosti a vyľudňovaniu vidieka.", "vector": [-1, null, 2, null, 1, -1, -1, -1, null, null, 2, null], "sources": [{"label": "Korzár SME – Kandidatúru ohlásil Zoltán Kašo", "url": "https://korzar.sme.sk/presov/c/kandidaturu-na-post-predsedu-presovskeho-samospravneho-kraja-ohlasil-zoltan-kaso"}]}, {"name": "Ľubomír Goliaš", "initials": "ĽG", "age": 45, "role": "majster stavebnej výroby", "city": "Torysa (okres Sabinov)", "coalition": "Jednota Slovanov", "bio": "Kandiduje za pan-slavisticko-suverenistickú stranu Jednota Slovanov. Kritizuje súčasného predsedu Majerského pre nakladanie s majetkom kraja, netransparentné prerozdeľovanie grantov a „zradu kresťanských hodnôt“; sám sa opisuje ako katolík a rodinne orientovaný človek.", "vector": [-2, null, null, null, null, -1, 2, null, 2, 2, null, -1], "sources": [{"label": "Korzár SME – ďalší kandidát na župana, kritizuje Majerského", "url": "https://korzar.sme.sk/presov/c/o-post-presovskeho-zupana-sa-bude-uchadzat-dalsi-kandidat-kritizuje-mazureka-aj-majerskeho"}]}, {"name": "Marián Geci", "initials": "MG", "age": null, "role": "finančný poradca a podnikateľ", "city": "Prešovský kraj (východné Slovensko)", "coalition": "nezávislý", "bio": "Nezávislý kandidát bez straníckej podpory, prezentuje sa ako kresťanský kandidát z východného Slovenska.", "vector": [null, null, null, null, null, null, null, null, 2, null, null, null], "sources": [{"label": "ta3 – Prešovský kraj čaká súboj jedenástich kandidátov", "url": "https://www.ta3.com/clanok/1068039/presovsky-kraj-caka-suboj-jedenastich-kandidatov-na-zupanske-kreslo-si-robi-zalusk-aj-migal-mazurek-si-lassakova"}]}, {"name": "Jozef Ištok", "initials": "JI", "age": 25, "role": "pôsobil v školstve a sociálnych službách; najmladší kandidát", "city": "Levoča", "coalition": "nezávislý", "bio": "Najmladší kandidát na predsedu PSK, chce priniesť „nový štýl“ vedenia kraja; pracoval v školstve a sociálnych službách.", "vector": [-1, null, null, null, null, null, null, null, null, null, 1, -2], "sources": [{"label": "ta3 – Prešovský kraj čaká súboj jedenástich kandidátov", "url": "https://www.ta3.com/clanok/1068039/presovsky-kraj-caka-suboj-jedenastich-kandidatov-na-zupanske-kreslo-si-robi-zalusk-aj-migal-mazurek-si-lassakova"}]}, {"name": "Drahomír Čureja", "initials": "DČ", "age": null, "role": "kandidát (bližšie informácie o profesii nezistené)", "city": "Prešovský kraj", "coalition": "nezávislý", "bio": "Nezávislý kandidát na predsedu PSK; verejne dostupné zdroje neuvádzajú podrobný program ani stanoviská k jednotlivým témam.", "vector": [null, null, null, null, null, null, null, null, null, null, null, null], "sources": [{"label": "Prešovak.sk – O post predsedu PSK sa uchádza 11 kandidátov", "url": "https://www.presovak.sk/clanky/15162/kto-sa-postavi-na-celo-presovskeho-samospravneho-kraja-o-post-zabojuje-11-kandidatov"}]}, {"name": "Ján Stanko", "initials": "JS", "age": null, "role": "kandidát (bližšie informácie o profesii nezistené)", "city": "Prešovský kraj", "coalition": "Slovexit", "bio": "Kandiduje za stranu Slovexit, ktorej ústredným programovým bodom je vystúpenie Slovenska z Európskej únie.", "vector": [-2, null, null, null, null, 2, null, null, null, null, null, null], "sources": [{"label": "Prešovak.sk – O post predsedu PSK sa uchádza 11 kandidátov", "url": "https://www.presovak.sk/clanky/15162/kto-sa-postavi-na-celo-presovskeho-samospravneho-kraja-o-post-zabojuje-11-kandidatov"}]}]}, "obvody": [{"number": 1, "seats": 6, "areaLabel": "Okres Bardejov (odhad počtu poslancov, nepotvrdené oficiálnym PDF)", "blocs": [], "independents": []}, {"number": 2, "seats": 5, "areaLabel": "Okres Humenné (odhad počtu poslancov, nepotvrdené oficiálnym PDF)", "blocs": [], "independents": []}, {"number": 3, "seats": 6, "areaLabel": "Okres Kežmarok (odhad počtu poslancov, nepotvrdené oficiálnym PDF)", "blocs": [], "independents": []}, {"number": 4, "seats": 3, "areaLabel": "Okres Levoča (odhad počtu poslancov, nepotvrdené oficiálnym PDF)", "blocs": [], "independents": []}, {"number": 5, "seats": 1, "areaLabel": "Okres Medzilaborce (odhad počtu poslancov, nepotvrdené oficiálnym PDF)", "blocs": [], "independents": []}, {"number": 6, "seats": 8, "areaLabel": "Okres Poprad (odhad počtu poslancov, nepotvrdené oficiálnym PDF)", "blocs": [], "independents": []}, {"number": 7, "seats": 15, "areaLabel": "Okres Prešov (dostal 2 mandáty navyše oproti pôvodnému návrhu; odhad, nepotvrdené oficiálnym PDF)", "blocs": [], "independents": []}, {"number": 8, "seats": 5, "areaLabel": "Okres Sabinov (odhad počtu poslancov, nepotvrdené oficiálnym PDF)", "blocs": [], "independents": []}, {"number": 9, "seats": 3, "areaLabel": "Okres Snina (odhad počtu poslancov, nepotvrdené oficiálnym PDF)", "blocs": [], "independents": []}, {"number": 10, "seats": 4, "areaLabel": "Okres Stará Ľubovňa (odhad počtu poslancov, nepotvrdené oficiálnym PDF)", "blocs": [], "independents": []}, {"number": 11, "seats": 2, "areaLabel": "Okres Stropkov (odhad počtu poslancov, nepotvrdené oficiálnym PDF)", "blocs": [], "independents": []}, {"number": 12, "seats": 3, "areaLabel": "Okres Svidník (odhad počtu poslancov, nepotvrdené oficiálnym PDF)", "blocs": [], "independents": []}, {"number": 13, "seats": 6, "areaLabel": "Okres Vranov nad Topľou (odhad počtu poslancov, nepotvrdené oficiálnym PDF)", "blocs": [], "independents": []}]}, "trenciansky": {"krajId": "trenciansky", "krajName": "Trenčiansky kraj", "chair": {"candidates": [{"name": "Jaroslav Baška", "initials": "JB", "age": 51, "role": "súčasný predseda TSK (od 2013), poslanec", "city": "Trenčín", "coalition": "Smer-SD, Hlas-SD, SNS, Republika", "bio": "Obhajuje post predsedu TSK, ktorý zastáva od roku 2013 (v prípade víťazstva by kraj viedol štvrtýkrát v rade). Jeho program stojí na siedmich pilieroch, medzi ktorými dominuje dopravná infraštruktúra a oprava ciest, zdravotníctvo (komplexná zdravotná starostlivosť na jednom mieste, spravodlivé financovanie nemocníc), stredné školstvo, sociálna oblasť a podpora športu a tradičnej kultúry. Podporujú ho všetky vládne strany (Smer, Hlas, SNS) aj Republika.", "vector": [2, 2, 2, null, null, 1, null, -2, null, null, 1, 2], "sources": [{"label": "teraz.sk – O post predsedu Trenčianskeho kraja majú záujem štyria uchádzači", "url": "https://www.teraz.sk/spravy/o-post-predsedu-trencianskeho-kraja-maj/987572-clanok.html"}, {"label": "teraz.sk – Prioritami TSK sú zdravotníctvo, doprava, školstvo a cestovný ruch", "url": "https://www.teraz.sk/regiony/prioritami-tsk-su-zdravotnictvo-dopra/176176-clanok.html"}, {"label": "blog.sme.sk – Kandidát na predsedu TSK Jaroslav Baška: Prioritou je komplexná zdravotná starostlivosť", "url": "https://blog.sme.sk/petergasparovic/politika/kandidat-predsedu-tsk-jaroslav-baska-prioritou-poskytovanie-komplexnej-zdravotnej-starostlivosti-jednom-mieste"}, {"label": "ta3.com – Baška ide znovu do boja o Trenčiansky kraj", "url": "https://www.ta3.com/clanok/1069823/baska-ide-znovu-do-boja-o-trenciansky-kraj-vyzvu-ho-traja-superi-medzi-poslancov-chce-az-236-kandidatov"}]}, {"name": "Natália Svítková", "initials": "NS", "age": 39, "role": "ekonómka, podnikateľka, mestská poslankyňa (Prievidza), krajská predsedníčka Demokratov", "city": "Prievidza", "coalition": "Demokrati, Progresívne Slovensko, SaS, KDH, Hnutie Slovensko, OKS", "bio": "Spoločná kandidátka opozície, ktorá chce ukončiť trojnásobné pôsobenie Jaroslava Bašku vo funkcii predsedu TSK. Vyštudovaná ekonómka a podnikateľka, dva volebné obdobia mestská poslankyňa v Prievidzi. Jej program stavia na zachovaní krajských nemocníc v rukách kraja (nie ich prevode na iné subjekty), riešení stavu mostných objektov a regionálnej dopravy, smerovaní eurofondov do inovácií a podpory podnikania a približovaní stredného odborného školstva odvetviam s vyššou pridanou hodnotou, ako aj získavaní špecialistov do okresov s najväčším nedostatkom lekárov.", "vector": [-2, 2, 2, null, null, -2, -2, -2, null, 2, null, -2], "sources": [{"label": "Trenčínak.sk – Natália Svítková chce ukončiť éru Bašku v Trenčianskom kraji", "url": "https://www.trencinak.sk/clanky/12675/natalia-svitkova-chce-v-trencianskom-kraji-porazit-basku-tvrdi-ze-jej-rodina-moze-byt-v-hladaciku-tajnej-sluzby"}, {"label": "Postoj – Spoločnou kandidátkou opozície v Trenčianskom kraji je Natália Svítková z Demokratov", "url": "https://www.postoj.sk/195098/dnes-treba-vediet"}, {"label": "teraz.sk – N. Svítková bude kandidovať na post predsedníčky Trenčianskeho kraja", "url": "https://www.teraz.sk/najnovsie/n-svitkova-bude-kandidovat-na-post-p/966422-clanok.html"}]}, {"name": "Daniel Galas", "initials": "DG", "age": 52, "role": "dôchodca", "city": "Partizánske", "coalition": "SLOVEXIT", "bio": "Kandidát strany SLOVEXIT (nástupnícka strana Ľudovej strany Naše Slovensko/Hnutie za suverénne Slovensko), ktorej ústredným programovým bodom je vystúpenie Slovenska z Európskej únie a dôraz na národnú a hospodársku suverenitu. K jeho konkrétnym krajským prioritám sa nepodarilo nájsť podrobnejšie verejné vyjadrenia.", "vector": [-1, null, null, null, -1, 2, null, null, null, null, null, null], "sources": [{"label": "teraz.sk – O post predsedu Trenčianskeho kraja majú záujem štyria uchádzači", "url": "https://www.teraz.sk/spravy/o-post-predsedu-trencianskeho-kraja-maj/987572-clanok.html"}, {"label": "referendum.sk – V Trenčianskom kraji zabojujú o post župana štyria kandidáti", "url": "https://www.referendum.sk/v-trencianskom-kraji-zabojuju-o-post-zupana-styria-kandidati/"}, {"label": "SLOVEXIT – Wikipédia", "url": "https://sk.wikipedia.org/wiki/SLOVEXIT"}]}, {"name": "Ľubomír Choleva", "initials": "ĽC", "age": 60, "role": "dôchodca", "city": "Prievidza", "coalition": "Vlastenecký blok", "bio": "Kandidát strany Vlastenecký blok, ktorá za základný pilier štátu považuje rodinu (definovanú ako muž, žena a deti), presadzuje hospodársku a finančnú suverenitu štátu a navrhuje prehodnotenie členstva Slovenska v EÚ a NATO. Konkrétne krajské priority sa nepodarilo dohľadať.", "vector": [-1, null, null, null, -1, 2, null, null, 2, null, null, null], "sources": [{"label": "teraz.sk – O post predsedu Trenčianskeho kraja majú záujem štyria uchádzači", "url": "https://www.teraz.sk/spravy/o-post-predsedu-trencianskeho-kraja-maj/987572-clanok.html"}, {"label": "referendum.sk – V Trenčianskom kraji zabojujú o post župana štyria kandidáti", "url": "https://www.referendum.sk/v-trencianskom-kraji-zabojuju-o-post-zupana-styria-kandidati/"}, {"label": "TVNOVINY.sk – Kandidátna listina strany Vlastenecký blok", "url": "https://tvnoviny.sk/domace/clanok/849482-kandidatna-listina-strany-vlastenecky-blok"}]}]}, "obvody": [{"number": 1, "seats": 3, "areaLabel": "okres Bánovce nad Bebravou", "blocs": [], "independents": []}, {"number": 2, "seats": 4, "areaLabel": "okres Ilava (Dubnica nad Váhom, Ilava, Nová Dubnica, Košeca...)", "blocs": [], "independents": []}, {"number": 3, "seats": 2, "areaLabel": "okres Myjava", "blocs": [], "independents": []}, {"number": 4, "seats": 5, "areaLabel": "okres Nové Mesto nad Váhom", "blocs": [], "independents": []}, {"number": 5, "seats": 3, "areaLabel": "okres Partizánske", "blocs": [], "independents": []}, {"number": 6, "seats": 5, "areaLabel": "okres Považská Bystrica", "blocs": [], "independents": []}, {"number": 7, "seats": 10, "areaLabel": "okres Prievidza", "blocs": [], "independents": []}, {"number": 8, "seats": 3, "areaLabel": "okres Púchov", "blocs": [], "independents": []}, {"number": 9, "seats": 9, "areaLabel": "okres Trenčín", "blocs": [], "independents": []}]}, "trnavsky": {"krajId": "trnavsky", "krajName": "Trnavský kraj", "chair": {"candidates": [{"name": "Jozef Viskupič", "initials": "JV", "age": 50, "role": "súčasný predseda TTSK · 3. kandidatúra", "city": "Trnava", "coalition": "Progresívne Slovensko, SaS, KDH, Demokrati, Hnutie Slovensko, Maďarské fórum, OKS", "bio": "Predsedom TTSK od roku 2017, obhajuje tretí mandát. Ako priority uvádza infraštruktúru a mosty, cyklotrasy, zdravotníctvo, sociálne služby, školstvo, kultúru, šport a pokračovanie v transparentnosti úradu.", "vector": [2, 1, 2, 1, 0, 1, -2, -2, 0, 2, 1, 2], "sources": [{"label": "Pravda", "url": "https://spravy.pravda.sk/regiony/clanok/816515-viskupic-ide-znovu-do-boja-o-trnavsku-zupu-za-chrbtom-ma-silnu-zostavu-stran-aj-znamu-tvar/"}, {"label": "TTSK", "url": "https://trnava-vuc.sk/zupan-ttsk/"}]}, {"name": "Peter Hambálek", "initials": "PH", "age": 44, "role": "generálny štátny radca", "city": "Trnava", "coalition": "Smer – SD, Hlas – SD, SNS, Republika", "bio": "Podpredseda Správy štátnych hmotných rezerv, syn poslanca NR SR. Sľubuje kvalitné a udržiavané cesty, podporu stredných škôl, športu, kultúry a sociálnej oblasti — kraj podľa neho potrebuje „nový impulz a novú energiu“.", "vector": [-2, 0, 2, -1, 1, 0, 1, -1, 1, 0, 1, -1], "sources": [{"label": "Postoj", "url": "https://www.postoj.sk/198100/kandidatom-smeru-na-trnavskeho-zupana-je-peter-hambalek"}, {"label": "Trnavské rádio", "url": "https://trnavske.radio/2026/07/31/dalsi-kandidat-na-zupana-smer-hlas-sns-a-republika-postavili-do-boja-petra-hambalka/"}]}, {"name": "József Berényi", "initials": "JB", "age": 59, "role": "podpredseda TTSK od 2013", "city": "Dolné Saliby", "coalition": "Magyar szövetség – Maďarská aliancia", "bio": "Deväť rokov vo vedení kraja ako podpredseda. Program stavia na cezhraničnej spolupráci a rozvoji južných okresov so silnou maďarskou menšinou, ktorej zastúpenie chce v kraji udržať.", "vector": [1, 0, 1, 0, 1, 2, -1, -2, 1, 0, 0, 2], "sources": [{"label": "Parlamentné listy", "url": "https://www.parlamentnelisty.sk/spravy/678622/o-kreslo-predsedu-trnavskeho-kraja-sa-uchadza-sedem-kandidatov-zabojuje-on-berenyi-cehlarik-i-terajsi-viskupic/"}]}, {"name": "Matej Lančarič", "initials": "ML", "age": 41, "role": "krajský a mestský poslanec, bývalý viceprimátor Trnavy", "city": "Trnava", "coalition": "nezávislý kandidát · líder tímu „Za lepší Trnavský kraj“", "bio": "Od roku 2010 mestský poslanec, od 2017 krajský poslanec. Program: doprava a infraštruktúra, dostupnejšie zdravotníctvo (napr. 24-hodinové lekárne), reforma integrovanej dopravy, otvorené športoviská a dostupnejšie sociálne služby.", "vector": [-1, 2, 2, 0, 1, 0, 0, -2, 0, 1, 2, 1], "sources": [{"label": "trnava-live.sk", "url": "https://www.trnava-live.sk/2026/06/22/kandidaturu-na-zupana-oznamil-mestsky-a-krajsky-poslanec-matej-lancaric-do-volieb-vstupuje-ako-lider-timu-za-lepsi-trnavsky-kraj/"}, {"label": "Denník N", "url": "https://dennikn.sk/minuta/5410406/"}]}, {"name": "Jaroslav Cehlárik", "initials": "JC", "age": 43, "role": "riaditeľ, nepočujúci kandidát", "city": "Opoj", "coalition": "Právo na pravdu", "bio": "Nepočujúci kandidát, v minulej kampani presadil vyššie odmeny tlmočníkov posunkovej reči a elektromobil pre kraj. Jeho strana Právo na pravdu stavia na národnej suverenite, tradičných hodnotách a dlhodobo zvažuje aj zrušenie VÚC.", "vector": [-1, null, null, null, null, 0, 2, 2, 1, 1, 1, -1], "sources": [{"label": "SITA", "url": "https://sita.sk/nepocujuci-jaroslav-cehlarik-sa-po-rokoch-opat-uchadza-o-kreslo-predsedu-trnavskeho-samospravneho-kraja/"}]}, {"name": "Róbert Dohál", "initials": "RD", "age": 64, "role": "poľnohospodársky inžinier, vedie PD Krakovany-Stráže", "city": "Krakovany", "coalition": "Alternatíva pre Slovensko", "bio": "Priekopník regeneratívneho poľnohospodárstva na Slovensku. Hlavné piliere programu: ochrana vody a pôdy, podpora regeneratívneho poľnohospodárstva a malých podnikateľov, hospodárska odolnosť regiónu.", "vector": [-1, null, 0, 2, 2, 0, 0, -1, 0, 1, 1, -1], "sources": [{"label": "Epoch Times SK", "url": "https://www.epochtimes.sk/r-dohal-poda-je-v-krize-a-potraviny-stracaju-hodnotu-regenerativne-polnohospodarstvo-je-jedina-alternativa-rozhovor_82275.html"}, {"label": "SME MY Trnava", "url": "https://my.sme.sk/trnava/c/zupan-chce-treti-mandat-vyzvu-ho-poslanec-polnohospodar-a-kandidat-strany-smer"}]}, {"name": "Štefan Pollák", "initials": "ŠP", "age": 43, "role": "účtovník", "city": "Veľké Blahovo", "coalition": "SOS – Spoločne občania Slovenska", "bio": "Kandidát strany SOS, ktorá stavia na tradičných národných a kresťanských hodnotách, rodine ako základnej jednotke spoločnosti a silnom štáte. Konkrétny krajský program zatiaľ nebol medializovaný.", "vector": [-1, null, null, -1, 1, -1, 1, -1, 2, null, 1, -2], "sources": [{"label": "SOS – strana", "url": "https://www.sosstrana.sk/"}, {"label": "teraz.sk", "url": "https://www.teraz.sk/regiony/volbyvuc26-o-post-predsedu-ttsk-sa-uc/990386-clanok.html"}]}]}, "obvody": [{"number": 1, "seats": 8, "areaLabel": "Dunajská Streda a okolie (okres Dunajská Streda)", "blocs": [], "independents": []}, {"number": 2, "seats": 7, "areaLabel": "Galanta a okolie (okres Galanta)", "blocs": [], "independents": []}, {"number": 3, "seats": 3, "areaLabel": "Hlohovec a okolie (okres Hlohovec)", "blocs": [], "independents": []}, {"number": 4, "seats": 5, "areaLabel": "Piešťany a okolie (okres Piešťany)", "blocs": [], "independents": []}, {"number": 5, "seats": 5, "areaLabel": "Senica a okolie (okres Senica)", "blocs": [], "independents": []}, {"number": 6, "seats": 3, "areaLabel": "Skalica a okolie (okres Skalica)", "blocs": [], "independents": []}, {"number": 7, "seats": 9, "areaLabel": "Trnava a okolie", "blocs": [{"name": "Progresívne Slovensko, SaS, KDH, Demokrati, Hnutie Slovensko, Maďarské fórum, OKS", "note": "Rovnaká koalícia, s akou obhajuje post Jozef Viskupič.", "vector": [2, 1, 2, 1, 0, 1, -2, -2, 0, 2, 1, 2], "roster": ["Mária Benová – SZČO, psychologička, Trnava", "Kristína Bolemanová – diplomatka, expertka na EÚ politiky, Trnava", "Zuzana Bošnáková – riaditeľka zariadenia pre seniorov, Trnava", "Marián Galbavý – advokát, Trnava", "Petra Helt – právnička, viceprednostka, Trnava", "Ľubica Horváthová – špecialistka na energetické projekty, Trnava", "Branislav Kramár – lekár-chirurg, Trnava", "Rastislav Mráz – podpredseda TTSK, právnik, Trnava", "Marián Viskupič – poslanec Národnej rady SR, Šúrovce"]}, {"name": "Smer – SD, Hlas – SD, SNS, Republika", "note": "Rovnaká koalícia ako kandidát na predsedu Peter Hambálek.", "vector": [-2, 0, 2, -1, 1, 0, 1, -1, 1, 0, 1, -1], "roster": ["Marta Gubrická – riaditeľka, Trnava", "Martin Halaksa – starosta obce, Košolná", "Peter Hambálek – generálny štátny radca (aj kandidát na predsedu), Trnava", "Juraj Horváth – technik údržby, Cífer", "Martin Pullmann – vedúci štátny zamestnanec, Trnava", "Jozef Remenár – technik-špecialista, Bučany", "Marcel Škorec – starosta obce, Hrnčiarovce nad Parnou", "Lívia Voleková – zdravotná sestra, Bučany", "Ľudovít Žambokréthy – podnikateľ, Trnava"]}, {"name": "Trnava pre každého", "note": "Regionálne hnutie okolo primátorského kandidáta Branislava Baroša — priority skôr mestské/pragmatické.", "vector": [-1, 0, 2, 1, 1, 0, 0, -1, 0, 2, 1, -1], "roster": ["Branislav Baroš – riaditeľ strojárenskej spoločnosti, Trnava", "Mária Bullová – podnikateľka, Trnava", "Kashif Butt – manažér, Trnava", "Jana Fridrichová – lekárka, Trnava", "Milan Hejduk – zubný lekár, Trnava", "Miloš Krištofík – podnikateľ, Trnava", "Peter Markovič – silnoprúdový energetik, Trnava", "Peter Morvay – podnikateľ, Trnava", "Martina Šarvaicová – ekonómka, konateľka, Trnava"]}, {"name": "Právo na pravdu", "note": "Jediný kandidát strany v obvode — riaditeľ, nepočujúci aktivista za práva zdravotne znevýhodnených.", "vector": [-1, null, null, null, null, 0, 2, 2, 1, 1, 1, -1], "roster": ["Jaroslav Cehlárik – riaditeľ, Opoj"]}, {"name": "Alternatíva pre Slovensko", "note": "Rovnaká strana ako kandidát na predsedu Róbert Dohál.", "vector": [-1, null, 0, 2, 2, 0, 0, -1, 0, 1, 1, -1], "roster": ["Anton Železník – riaditeľ investičných projektov, Trnava"]}, {"name": "Nova", "note": "Liberálno-konzervatívna prozápadná strana, dôraz na boj proti korupcii a trhové riešenia.", "vector": [-1, 0, 0, 0, 1, 0, -1, -1, 1, 2, 0, -1], "roster": ["Josef Filip Kozoň – poslanec, Bohdanovce nad Trnavou"]}, {"name": "Kotlebovci – Ľudová strana Naše Slovensko", "note": "Krajne pravicová, národovecká strana, odmieta podporu menšín a presadzuje tvrdú suverenitu.", "vector": [-2, 0, 0, -1, 0, -2, 2, 0, 2, 1, 0, -1], "roster": ["Ján Chalama – obchodný zástupca, Trnava"]}, {"name": "Slovexit", "note": "Jednoproblémové hnutie presadzujúce vystúpenie Slovenska z EÚ a NATO.", "vector": [-1, 0, 0, 0, 0, 0, 2, 0, 1, 0, 0, -1], "roster": ["Vladimír Ondrejička – revízny technik, Križovany nad Dudváhom", "Róbert Smák – hlavný kuchár, Križovany nad Dudváhom"]}], "independents": ["Juraj Baďura – grafik, Trnava", "Ivan Bočko – starosta obce, Bohdanovce nad Trnavou", "Gabriela Cabanová – riaditeľka školy, Trnava", "Andrea Čajková – vysokoškolská pedagogička, Trnava", "Tomáš Drobný – spisovateľ, študent, Trnava", "Katarína Ďurková – vysokoškolská učiteľka, Trnava", "Magdaléna Eliášová – riaditeľka školy, Trnava", "Stanislav Hric – riaditeľ materskej školy, Trnava", "Ján Jobb – environmentálny a športový manažér, Trnava", "Marcel Krajčo – zástupca primátora, Trnava", "Štefan Krištofík – všeobecný lekár, Trnava", "Peter Kvasničák – manažér sieťových služieb, Trnava", "Matej Lančarič – krajský poslanec, projektový manažér, Trnava (aj kandidát na predsedu)", "David Matula – starosta, Boleráz", "Marek Neštický – vedúci zimného štadióna, Trnava", "Tibor Pekarčík – podnikateľ v cestovnom ruchu, mestský poslanec, Trnava", "Ondrej Štefánik – manažér, Trnava"]}]}, "zilinsky": {"krajId": "zilinsky", "krajName": "Žilinský kraj", "chair": {"candidates": [{"name": "Erika Jurinová", "initials": "EJ", "age": 61, "role": "súčasná predsedníčka ŽSK (obhajuje 3. funkčné obdobie)", "city": "Žilina", "coalition": "KDH, Hnutie Slovensko, PS, SaS, Demokrati, Za ľudí, Konzervatívci – Kresťanská únia", "bio": "Úradujúca županka od roku 2017, kandiduje s heslom „Nezastavujeme. Pokračujeme“ a s podporou širokej občiansko-konzervatívnej a liberálnej koalície siedmich strán. Za prioritu označuje zdravotníctvo a spravodlivé financovanie nemocníc, svoje predchádzajúce obdobia prezentuje ako roky zodpovedného hospodárenia a investícií do dopravy, sociálnych služieb, školstva a kultúry.", "vector": [2, 2, 1, 1, 1, 1, -2, -2, 0, 2, 1, 2], "sources": [{"label": "TERAZ.sk – Jurinová sa bude opäť uchádzať", "url": "https://www.teraz.sk/regiony/erika-jurinova-sa-bude-opat-uchadza/974068-clanok.html"}, {"label": "Žilinský večerník – kandidátka širokej demokratickej koalície", "url": "https://www.zilinskyvecernik.sk/clanok/erika-jurinova-predstavila-kandidatku-sirokej-demokratickej-koalicie-spolocne-za-lepsi-zilinsky-kraj/17831/"}, {"label": "Info.sk – ŽSK spoznal kandidátov na župana", "url": "https://www.info.sk/sprava/281730/zilinsky-kraj-spoznal-kandidatov-na-zupana-o-post-predsedu-zsk-zabojuje-sedem-uchadzacov"}]}, {"name": "Igor Choma", "initials": "IC", "age": 62, "role": "štátny tajomník Ministerstva dopravy SR, bývalý primátor Žiliny (2010-2018)", "city": "Žilina (rodák z Martina)", "coalition": "Smer-SD", "bio": "Kandidatúru oznámil predseda Smeru-SD Robert Fico v júli 2026. Choma je bývalý osemročný primátor Žiliny a súčasný štátny tajomník rezortu dopravy. Ako priority uvádza opravy ciest II. a III. triedy, výstavbu kruhových objazdov, opravy mostov a prípravu obchvatov obcí, financovaných najmä z eurofondov; hlási sa k „zdravému sedliackemu rozumu a minimu politiky“.", "vector": [-1, 1, 2, -1, 1, -1, 2, -1, 1, 0, 1, 2], "sources": [{"label": "TERAZ.sk – Choma bude kandidovať na predsedu Žilinského kraja", "url": "https://www.teraz.sk/regiony/igor-choma-bude-kandidovat-na-post-pred/975725-clanok.html"}, {"label": "Žilinak.sk – Choma ide do boja o župu", "url": "https://www.zilinak.sk/clanky/41571/igor-choma-ide-do-boja-o-zupu-byvaly-primator-ziliny-stavil-na-skusenosti-z-dopravy"}]}, {"name": "Adam Lučanský", "initials": "AL", "age": 32, "role": "poslanec Národnej rady SR", "city": "Martin", "coalition": "SNS", "bio": "Poslanec NR SR (narodený 1993 v Martine, syn zosnulého bývalého policajného prezidenta Milana Lučanského), kandidatúru za SNS oznámil predseda strany Andrej Danko v júni 2026. Za kľúčové témy označuje bývanie, dopravu a zdravotníctvo, kritizuje súčasné vedenie kraja za „zlé manažovanie“ a Žilinský kraj nazýva „klenotom Slovenska“, ktorý potrebuje profesionálne riadenie.", "vector": [-1, 1, 1, -1, 2, -2, 2, -1, 2, 0, 1, -1], "sources": [{"label": "StartitUp – SNS predstavila nominantov, Lučanský", "url": "https://www.startitup.sk/sns-predstavila-nominantov-pre-zupne-volby-v-ziline-postavi-poslanca-lucanskeho/"}, {"label": "Moja Žilina – o kreslo šéfa ŽSK sa uchádza Lučanský", "url": "https://www.moja-zilina.sk/clanky/1073995/o-kreslo-sefa-zilinskeho-samospravneho-kraja-sa-uchadza-adam-lucansky/"}]}, {"name": "Martin Kapitulík", "initials": "MK", "age": 41, "role": "krajský poslanec ŽSK, bývalý viceprimátor Žiliny, zakladateľ iniciatívy Žilina Innovation Valley", "city": "Žilina", "coalition": "nezávislý kandidát", "bio": "Bývalý viceprimátor Žiliny a súčasný krajský poslanec, kandiduje ako nezávislý. Kandidatúru zdôvodňuje najmä výsledkami vlastného prieskumu (tablo2026.sk) medzi maturantmi, podľa ktorého chce v kraji zostať len 22 % z nich. Prioritami sú vyššie mzdy a kvalitnejšia práca, vyššia pridaná hodnota priemyslu, moderné stredoškolské kampusy, duálne vzdelávanie, podpora SMART technológií a robotiky, ako aj kvalitná zdravotná starostlivosť, dôstojné verejné priestory a lacnejšia čistá energia pre starších obyvateľov.", "vector": [-1, 1, null, 1, null, null, null, -2, null, null, 1, -1], "sources": [{"label": "24hod.sk – Kapitulík ohlásil kandidatúru", "url": "https://www.24hod.sk/kapitulik-ohlasil-kandidaturu-na-zupana-zilinskeho-kraja-prioritou-je-modernizovat-kraj-a-udrzat-mladych-doma-video-cl827977.html"}, {"label": "SME MY Žilina – Odvaha urobiť viac", "url": "https://my.sme.sk/zilina/c/odvaha-urobit-viac-martin-kapitulik-ide-do-zupnych-volieb-aby-zastavil-odliv-mladych-z-kraja"}, {"label": "TERAZ.sk – O post predsedu ŽSK sa bude uchádzať Kapitulík", "url": "https://www.teraz.sk/regiony/o-post-predsedu-zilinskeho-kraja-sa-bu/974905-clanok.html"}]}, {"name": "Anna Belousovová", "initials": "AB", "age": 68, "role": "krajská poslankyňa ŽSK, viceprimátorka Čadce", "city": "Čadca", "coalition": "nezávislá kandidátka s podporou hnutia Republika", "bio": "Dlhoročná komunálna a krajská poslankyňa, kandidatúru na županku oznámila s podporou hnutia Republika (predseda Milan Uhrík vyzdvihol jej skúsenosti z komunálnej politiky). Kampaň stavia na skúsenostiach a dôvere voličov, nie na veľkých sľuboch („nebudem dávať veľkohubé sľuby“).", "vector": [-1, null, null, -1, 1, -2, 2, -1, 2, 0, 1, 2], "sources": [{"label": "Žilinak.sk – Belousovová zabojuje o post županky", "url": "https://www.zilinak.sk/clanky/40840/video-o-post-zupanky-zilinskeho-kraja-zabojuje-aj-anna-belousovova-volicom-poslala-odkaz"}, {"label": "Pravda.sk – Belousovová kandiduje za županku", "url": "https://spravy.pravda.sk/domace/clanok/810579-belousovova-kandiduje-za-zupanku-zilinskeho-kraja/"}, {"label": "Moja Žilina – Belousovová bude kandidovať", "url": "https://www.moja-zilina.sk/clanky/1072858/a-belousovova-bude-kandidovat-na-predsednicky-post-v-zilinskom-kraji/"}]}, {"name": "Milan Pova", "initials": "MP", "age": null, "role": "kandidát Komunistickej strany Slovenska (KSS)", "city": "Žilinský kraj", "coalition": "KSS", "bio": "Jeden z dvoch neskôr odhalených kandidátov (spolu s J. Chlustinovou), nominovaný Komunistickou stranou Slovenska. Podrobný osobný program sa nepodarilo vo verejných zdrojoch dohľadať – vektor nižšie je z väčšej časti odvodený z celoštátneho programu KSS (dôraz na verejné zdravotníctvo a sociálny štát, odmietanie členstva v EÚ/NATO, sekulárny postoj), preto obsahuje viacero neznámych hodnôt.", "vector": [-1, 2, 1, 0, null, 1, 2, null, -2, null, 2, null], "sources": [{"label": "Žilinak.sk – Ďalšie mená odhalené: komunisti aj Slovexit", "url": "https://www.zilinak.sk/clanky/42543/dalsie-mena-odhalene-o-zilinsku-zupu-chce-bojovat-7-kandidatov-do-hry-vstupili-komunisti-aj-slovexit"}]}, {"name": "Jana Chlustinová", "initials": "JC", "age": null, "role": "kandidátka strany Slovexit", "city": "Žilinský kraj", "coalition": "Slovexit", "bio": "Druhá z dvoch neskôr odhalených kandidátov, nominovaná stranou Slovexit, ktorú médiá opisujú ako „záložnú“ stranu Mariána Kotlebu zameranú na vystúpenie Slovenska z EÚ. Osobný program sa nepodarilo dohľadať – vektor je len čiastočne odvodený z profilu strany (silný euroskepticizmus, národovectvo), zvyšné osi ostávajú neznáme.", "vector": [-1, null, null, null, null, -2, 2, 1, 2, null, null, null], "sources": [{"label": "Žilinak.sk – Ďalšie mená odhalené: komunisti aj Slovexit", "url": "https://www.zilinak.sk/clanky/42543/dalsie-mena-odhalene-o-zilinsku-zupu-chce-bojovat-7-kandidatov-do-hry-vstupili-komunisti-aj-slovexit"}]}]}, "obvody": [{"number": 1, "seats": 3, "areaLabel": "okres Bytča", "blocs": [], "independents": []}, {"number": 2, "seats": 7, "areaLabel": "okres Čadca (mestá Čadca, Turzovka, Krásno nad Kysucou, Skalité, Oščadnica a okolité obce)", "blocs": [{"name": "Republika", "note": "Rovnaké hnutie ako kandidátka na predsedu Anna Belousovová (vektor prevzatý z jej pozície).", "vector": [-1, null, null, -1, 1, -2, 2, -1, 2, 0, 1, 2], "roster": ["Martin Baník – kandidát hnutia Republika, okres Čadca"]}, {"name": "Hlas – sociálna demokracia", "note": "Samostatná strana bez vlastného kandidáta na predsedu v tomto kraji; vektor odvodený z celoštátneho programu strany (stredoľavé, sociálne zameranie, súčasť vládnej koalície).", "vector": [0, 1, 1, 0, 1, 1, 0, -1, 0, 0, 1, 1], "roster": ["Matej Šimášek – Čadca", "Pavla Šimeková – Čadca"]}, {"name": "SNS", "note": "Rovnaká strana ako kandidát na predsedu Adam Lučanský (vektor prevzatý z jeho pozície).", "vector": [-1, 1, 1, -1, 2, -2, 2, -1, 2, 0, 1, -1], "roster": ["Marcel Šulo – Čadca"]}, {"name": "KDH, Dobrá voľba a umiernení", "note": "KDH je hlavnou stranou koalície podporujúcej Eriku Jurinovú na predsedu; vektor preto prevzatý z jej pozície.", "vector": [2, 2, 1, 1, 1, 1, -2, -2, 0, 2, 1, 2], "roster": ["Peter Strapáč – okres Čadca"]}], "independents": ["Martin Šenfeld – nezávislý, okres Čadca", "Xénia Šurhaňáková – nezávislá, okres Čadca", "Peter Staškovan – nezávislý/miestna kandidátka, okres Čadca"]}, {"number": 3, "seats": 3, "areaLabel": "okres Dolný Kubín", "blocs": [], "independents": []}, {"number": 4, "seats": 3, "areaLabel": "okres Kysucké Nové Mesto (mesto Kysucké Nové Mesto a 13 okolitých obcí)", "blocs": [{"name": "OĽANO, NOVA, Kresťanská únia, Zmena zdola, Sme rodina, Za ľudí, Demokratická strana, ODS, Šanca", "note": "Viacero členských strán (Za ľudí, Kresťanská únia) je súčasťou aj krajskej koalície podporujúcej Eriku Jurinovú na predsedu – vektor preto prevzatý z jej pozície.", "vector": [2, 2, 1, 1, 1, 1, -2, -2, 0, 2, 1, 2], "roster": ["Lukáš Borovička, Mgr. – 36 r., IT špecialista, Kysucké Nové Mesto"]}, {"name": "Skúsme to inak, Sloboda a Solidarita, Občianska konzervatívna strana", "note": "SaS je súčasťou krajskej koalície podporujúcej Eriku Jurinovú na predsedu – vektor preto prevzatý z jej pozície.", "vector": [2, 2, 1, 1, 1, 1, -2, -2, 0, 2, 1, 2], "roster": ["Rudolf Drexler, Ing. – 58 r., konzultant, Kysucké Nové Mesto"]}, {"name": "Hlas – sociálna demokracia", "note": "Samostatná strana bez vlastného kandidáta na predsedu v tomto kraji; vektor odvodený z celoštátneho programu strany.", "vector": [0, 1, 1, 0, 1, 1, 0, -1, 0, 0, 1, 1], "roster": ["Alena Dudeková, PhDr. MBA – 37 r., starostka obce Povina"]}, {"name": "Kotlebovci – Ľudová strana Naše Slovensko", "note": "Party-level vektor odvodený z dlhodobo známeho celoštátneho programu strany (národovecký, protieurópsky, sociálne populistický, sekulárny/anti-cirkevný v inštitucionálnej rovine).", "vector": [-1, null, null, -1, 1, -2, 2, 1, 2, 0, 1, -1], "roster": ["Emília Frolová – 63 r., dôchodkyňa, Kysucký Lieskovec"]}, {"name": "KDH, Dobrá voľba a umiernení", "note": "KDH je hlavnou stranou koalície podporujúcej Eriku Jurinovú na predsedu; vektor preto prevzatý z jej pozície.", "vector": [2, 2, 1, 1, 1, 1, -2, -2, 0, 2, 1, 2], "roster": ["Ondrej Holienčík, Mgr. Ing. – 50 r., riaditeľ strednej školy, Kysucké Nové Mesto"]}], "independents": ["Matej Fabšík, Mgr. – 37 r., energetik, súčasný krajský poslanec, Kysucké Nové Mesto", "Felicita Chromjaková, prof. Ing. PhD. – 54 r., univerzitná profesorka, Kysucké Nové Mesto", "Peter Janík – 51 r., živnostník, Kysucké Nové Mesto", "Miroslav Medvecký – kandidát, okres Kysucké Nové Mesto (strana/nezávislosť neuvedená)", "Dušan Mičian – kandidát, okres Kysucké Nové Mesto (strana/nezávislosť neuvedená)", "Štefan Mrenka – kandidát, okres Kysucké Nové Mesto (strana/nezávislosť neuvedená)", "Vladislav Piják – kandidát, okres Kysucké Nové Mesto (strana/nezávislosť neuvedená)", "Ivan Poláček – kandidát, okres Kysucké Nové Mesto (strana/nezávislosť neuvedená)", "Martin Priečko – kandidát, okres Kysucké Nové Mesto (strana/nezávislosť neuvedená)", "Ľudmila Romanová – kandidátka, okres Kysucké Nové Mesto (strana/nezávislosť neuvedená)", "Andrea Starinská – kandidátka, okres Kysucké Nové Mesto (strana/nezávislosť neuvedená)"]}, {"number": 5, "seats": 6, "areaLabel": "okres Liptovský Mikuláš", "blocs": [], "independents": []}, {"number": 6, "seats": 8, "areaLabel": "okres Martin (vrátane 7 obcí z okresu Turčianske Teplice: Abramová, Blažovce, Borcová, Jazernica, Moškovec, Mošovce, Ondrašová)", "blocs": [], "independents": []}, {"number": 7, "seats": 5, "areaLabel": "okres Námestovo", "blocs": [], "independents": []}, {"number": 8, "seats": 5, "areaLabel": "okres Ružomberok", "blocs": [], "independents": []}, {"number": 9, "seats": 1, "areaLabel": "okres Turčianske Teplice (bez obcí patriacich do obvodu Martin)", "blocs": [], "independents": []}, {"number": 10, "seats": 3, "areaLabel": "okres Tvrdošín", "blocs": [], "independents": []}, {"number": 11, "seats": 12, "areaLabel": "okres Žilina (mesto Žilina a okolité obce)", "blocs": [], "independents": []}]}};
 
-  var INDEPENDENTS = [
-    "Juraj Baďura – grafik, Trnava","Ivan Bočko – starosta obce, Bohdanovce nad Trnavou","Gabriela Cabanová – riaditeľka školy, Trnava",
-    "Andrea Čajková – vysokoškolská pedagogička, Trnava","Tomáš Drobný – spisovateľ, študent, Trnava","Katarína Ďurková – vysokoškolská učiteľka, Trnava",
-    "Magdaléna Eliášová – riaditeľka školy, Trnava","Stanislav Hric – riaditeľ materskej školy, Trnava","Ján Jobb – environmentálny a športový manažér, Trnava",
-    "Marcel Krajčo – zástupca primátora, Trnava","Štefan Krištofík – všeobecný lekár, Trnava","Peter Kvasničák – manažér sieťových služieb, Trnava",
-    "Matej Lančarič – krajský poslanec, projektový manažér, Trnava (aj kandidát na predsedu)","David Matula – starosta, Boleráz","Marek Neštický – vedúci zimného štadióna, Trnava",
-    "Tibor Pekarčík – podnikateľ v cestovnom ruchu, mestský poslanec, Trnava","Ondrej Štefánik – manažér, Trnava"
-  ];
+  // ---------------------------------------------------------------
 
-  var answers = new Array(QUESTIONS.length).fill(null);
-  var idx = 0;
+  function colorForName(name){
+    var s = (name||'').toLowerCase();
+    if(s.indexOf('nezávis')>=0) return 'var(--bloc-ind)';
+    if(s.indexOf('smer')>=0 || s.indexOf('hlas')>=0 || s.indexOf('sns')>=0 || s.indexOf('republika')>=0) return 'var(--bloc-b)';
+    if(s.indexOf('progresívne')>=0 || s.indexOf(' sas')>=0 || s.indexOf('kdh')>=0 || s.indexOf('demokrati')>=0 || s.indexOf('hnutie slovensko')>=0) return 'var(--bloc-a)';
+    if(s.indexOf('pre každého')>=0 || s.indexOf('za lepší')>=0 || s.indexOf('náš kraj')>=0) return 'var(--bloc-c)';
+    return 'var(--bloc-minor)';
+  }
+  function initialsFor(name){
+    var parts = name.replace(/\(.*?\)/g,'').trim().split(/\s+/).filter(Boolean);
+    if(parts.length===0) return '?';
+    if(parts.length===1) return parts[0].slice(0,2).toUpperCase();
+    return (parts[0][0]+parts[parts.length-1][0]).toUpperCase();
+  }
 
-  var qAxis = document.getElementById('qAxis');
-  var qCount = document.getElementById('qCount');
-  var qText = document.getElementById('qText');
-  var qLikert = document.getElementById('qLikert');
-  var barFill = document.getElementById('barFill');
-  var topProgress = document.getElementById('topProgress');
-  var prevBtn = document.getElementById('prevBtn');
-  var nextBtn = document.getElementById('nextBtn');
-  var skipBtn = document.getElementById('skipBtn');
+  var state = { krajId:null, obvodNumber:null, answers:new Array(QUESTIONS.length).fill(null), idx:0 };
+
+  var screenKraj = document.getElementById('screenKraj');
+  var screenObvod = document.getElementById('screenObvod');
   var quizSection = document.getElementById('quizSection');
   var resultsSection = document.getElementById('results');
+  var heroSection = document.getElementById('heroSection');
+  var crumbs = document.getElementById('crumbs');
+  var krajGrid = document.getElementById('krajGrid');
+  var obvodGrid = document.getElementById('obvodGrid');
+  var obvodHeading = document.getElementById('obvodHeading');
+
+  function renderKrajGrid(){
+    krajGrid.innerHTML = '';
+    KRAJ_META.forEach(function(k){
+      var data = KRAJE[k.id];
+      var ready = !!data;
+      var btn = document.createElement('button');
+      btn.className = 'kraj-card';
+      btn.disabled = !ready;
+      var chairN = ready ? data.chair.candidates.length : 0;
+      var obvN = ready ? data.obvody.length : 0;
+      btn.innerHTML = '<div class="kname">' + k.name + '</div>' +
+        '<div class="kmeta">' + (ready ? chairN + ' kandidátov na predsedu · ' + obvN + ' obvodov' : 'dáta sa pripravujú') + '</div>' +
+        '<span class="kstatus ' + (ready?'ready':'pending') + '">' + (ready?'Pripravené':'Pripravujeme') + '</span>';
+      if(ready){ btn.addEventListener('click', function(){ selectKraj(k.id); }); }
+      krajGrid.appendChild(btn);
+    });
+  }
+
+  function selectKraj(id){
+    state.krajId = id;
+    state.obvodNumber = null;
+    var meta = KRAJ_META.filter(function(k){ return k.id===id; })[0];
+    obvodHeading.textContent = '2. Vyberte volebný obvod — ' + meta.name;
+    var data = KRAJE[id];
+    obvodGrid.innerHTML = '';
+    data.obvody.slice().sort(function(a,b){ return (a.number||0)-(b.number||0); }).forEach(function(o){
+      var btn = document.createElement('button');
+      btn.className = 'obvod-card';
+      var seatsTxt = o.seats ? (o.seats + ' mandátov') : 'počet mandátov sa spresňuje';
+      var candTxt = (o.blocs.length || o.independents.length)
+        ? (o.blocs.length + ' skupín, ' + o.independents.length + ' nezávislých')
+        : 'kandidáti sa pripravujú';
+      btn.innerHTML = '<div class="oname">Obvod č. ' + o.number + '</div>' +
+        '<div class="ometa">' + (o.areaLabel||'') + ' · ' + seatsTxt + ' · ' + candTxt + '</div>';
+      btn.addEventListener('click', function(){ selectObvod(o.number); });
+      obvodGrid.appendChild(btn);
+    });
+    heroSection.hidden = true;
+    screenKraj.hidden = true;
+    screenObvod.hidden = false;
+    crumbs.innerHTML = '<span>1. Kraj</span> → <b>' + meta.name + '</b>';
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+
+  function selectObvod(number){
+    state.obvodNumber = number;
+    state.answers = new Array(QUESTIONS.length).fill(null);
+    state.idx = 0;
+    screenObvod.hidden = true;
+    quizSection.hidden = false;
+    var meta = KRAJ_META.filter(function(k){ return k.id===state.krajId; })[0];
+    crumbs.innerHTML = '<span>1. Kraj</span> → <span>' + meta.name + '</span> → <b>Obvod ' + number + '</b>';
+    renderQuestion();
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+
+  document.getElementById('backToKraj').addEventListener('click', function(){
+    screenObvod.hidden = true;
+    heroSection.hidden = false;
+    screenKraj.hidden = false;
+    crumbs.textContent = '1. Kraj';
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+  document.getElementById('brandHome').addEventListener('click', function(){
+    resultsSection.hidden = true; resultsSection.innerHTML='';
+    quizSection.hidden = true;
+    screenObvod.hidden = true;
+    heroSection.hidden = false;
+    screenKraj.hidden = false;
+    crumbs.textContent = '1. Kraj';
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+
+  // ---------------- QUIZ ----------------
+  var qAxis=document.getElementById('qAxis'), qCount=document.getElementById('qCount'), qText=document.getElementById('qText'),
+      qLikert=document.getElementById('qLikert'), barFill=document.getElementById('barFill'),
+      prevBtn=document.getElementById('prevBtn'), nextBtn=document.getElementById('nextBtn'), skipBtn=document.getElementById('skipBtn');
+
+  function krajName(){ var m=KRAJ_META.filter(function(k){return k.id===state.krajId;})[0]; return m?m.name:'Kraj'; }
 
   function renderQuestion(){
-    var q = QUESTIONS[idx];
+    var q = QUESTIONS[state.idx];
     qAxis.textContent = q.axis;
-    qCount.textContent = (idx+1) + ' / ' + QUESTIONS.length;
-    qText.textContent = q.text;
-    topProgress.textContent = 'otázka ' + (idx+1) + ' / ' + QUESTIONS.length;
-    barFill.style.width = ((idx+1)/QUESTIONS.length*100) + '%';
+    qCount.textContent = (state.idx+1) + ' / ' + QUESTIONS.length;
+    qText.textContent = q.text.replace('{KRAJ}', krajName());
+    barFill.style.width = ((state.idx+1)/QUESTIONS.length*100) + '%';
 
     qLikert.innerHTML = '';
     LIKERT.forEach(function(opt){
       var b = document.createElement('button');
-      b.type = 'button';
-      b.textContent = opt.label;
-      if(answers[idx] === opt.v){ b.className = 'sel'; }
-      b.addEventListener('click', function(){
-        answers[idx] = opt.v;
-        renderQuestion();
-      });
+      b.type = 'button'; b.textContent = opt.label;
+      if(state.answers[state.idx] === opt.v){ b.className = 'sel'; }
+      b.addEventListener('click', function(){ state.answers[state.idx] = opt.v; renderQuestion(); });
       qLikert.appendChild(b);
     });
-
-    prevBtn.disabled = idx === 0;
-    nextBtn.textContent = (idx === QUESTIONS.length-1) ? 'Zobraziť výsledky →' : 'Ďalej →';
+    prevBtn.disabled = state.idx === 0;
+    nextBtn.textContent = (state.idx === QUESTIONS.length-1) ? 'Zobraziť výsledky →' : 'Ďalej →';
   }
 
-  prevBtn.addEventListener('click', function(){ if(idx>0){ idx--; renderQuestion(); } });
+  prevBtn.addEventListener('click', function(){ if(state.idx>0){ state.idx--; renderQuestion(); } });
   nextBtn.addEventListener('click', function(){
-    if(idx < QUESTIONS.length-1){ idx++; renderQuestion(); }
-    else { showResults(); }
+    if(state.idx < QUESTIONS.length-1){ state.idx++; renderQuestion(); } else { showResults(); }
   });
   skipBtn.addEventListener('click', function(){
-    answers[idx] = null;
-    if(idx < QUESTIONS.length-1){ idx++; renderQuestion(); }
-    else { showResults(); }
+    state.answers[state.idx] = null;
+    if(state.idx < QUESTIONS.length-1){ state.idx++; renderQuestion(); } else { showResults(); }
   });
 
   function matchScore(vector){
     var sum=0, n=0;
     for(var i=0;i<QUESTIONS.length;i++){
-      var v = vector[i], u = answers[i];
+      var v = vector[i], u = state.answers[i];
       if(v===null || v===undefined || u===null || u===undefined) continue;
       sum += Math.abs(v-u); n++;
     }
     if(n===0) return null;
-    var pct = Math.round((1 - (sum/n)/4) * 100);
-    return {pct:pct, n:n};
+    return { pct: Math.round((1 - (sum/n)/4) * 100) };
   }
-
   function topAgreements(vector, limit){
     var diffs = [];
     for(var i=0;i<QUESTIONS.length;i++){
-      var v = vector[i], u = answers[i];
+      var v = vector[i], u = state.answers[i];
       if(v===null || v===undefined || u===null || u===undefined) continue;
       diffs.push({i:i, d:Math.abs(v-u)});
     }
     diffs.sort(function(a,b){ return a.d - b.d; });
     return diffs.slice(0, limit).filter(function(x){ return x.d<=1; }).map(function(x){ return QUESTIONS[x.i].short; });
   }
-
-  function meterColor(pct){
-    if(pct>=75) return 'var(--accent)';
-    if(pct>=55) return 'var(--amber)';
-    return 'var(--line-strong)';
-  }
+  function meterColor(pct){ if(pct>=75) return 'var(--accent)'; if(pct>=55) return 'var(--amber)'; return 'var(--line-strong)'; }
 
   function renderChairCard(c, rank){
     var m = matchScore(c.vector);
     var pct = m ? m.pct : null;
     var agree = m ? topAgreements(c.vector, 3) : [];
+    var color = colorForName(c.coalition);
     var div = document.createElement('div');
     div.className = 'cand-card';
     div.innerHTML =
       '<div class="cand-top">' +
         '<div class="rank">#' + rank + '</div>' +
-        '<div class="avatar" style="background:' + c.color + '">' + c.initials + '</div>' +
+        '<div class="avatar" style="background:' + color + '">' + c.initials + '</div>' +
         '<div class="cand-info">' +
           '<div class="cand-name">' + c.name + '</div>' +
           '<div class="cand-role">' + c.role + ' · ' + c.city + '</div>' +
@@ -587,12 +481,13 @@
   function renderBlocCard(b, rank){
     var m = matchScore(b.vector);
     var pct = m ? m.pct : null;
+    var color = colorForName(b.name);
     var div = document.createElement('div');
     div.className = 'cand-card';
     div.innerHTML =
       '<div class="cand-top">' +
         '<div class="rank">#' + rank + '</div>' +
-        '<div class="avatar" style="background:' + b.color + '">' + b.name.slice(0,1) + '</div>' +
+        '<div class="avatar" style="background:' + color + '">' + b.name.replace(/[^\p{L}]/gu,'').slice(0,1).toUpperCase() + '</div>' +
         '<div class="cand-info">' +
           '<div class="cand-name">' + b.name + '</div>' +
           '<div class="cand-role">' + b.note + '</div>' +
@@ -603,7 +498,7 @@
           '<div class="meter"><i style="width:' + (pct||0) + '%; background:' + meterColor(pct||0) + '"></i></div>' +
         '</div>' +
       '</div>' +
-      '<details class="roster"><summary>Kandidáti tejto skupiny v obvode č. 7 (' + b.roster.length + ')</summary>' +
+      '<details class="roster"><summary>Kandidáti tejto skupiny v tomto obvode (' + b.roster.length + ')</summary>' +
         '<div class="roster-grid">' + b.roster.map(function(r){
           var parts = r.split(' – ');
           return '<div class="roster-item"><b>' + parts[0] + '</b>' + (parts[1]? ' — ' + parts[1] : '') + '</div>';
@@ -616,72 +511,77 @@
     quizSection.hidden = true;
     resultsSection.hidden = false;
 
-    var chairRanked = CHAIR.slice().map(function(c){ return {c:c, m:matchScore(c.vector)}; })
-      .sort(function(a,b){ var pa=a.m?a.m.pct:-1, pb=b.m?b.m.pct:-1; return pb-pa; });
+    var data = KRAJE[state.krajId];
+    var obvod = data.obvody.filter(function(o){ return o.number===state.obvodNumber; })[0];
+    var meta = KRAJ_META.filter(function(k){ return k.id===state.krajId; })[0];
 
-    var blocRanked = COUNCIL_BLOCS.slice().map(function(b){ return {b:b, m:matchScore(b.vector)}; })
+    var chairRanked = data.chair.candidates.slice().map(function(c){ return {c:c, m:matchScore(c.vector)}; })
+      .sort(function(a,b){ var pa=a.m?a.m.pct:-1, pb=b.m?b.m.pct:-1; return pb-pa; });
+    var blocRanked = obvod.blocs.slice().map(function(b){ return {b:b, m:matchScore(b.vector)}; })
       .sort(function(a,b){ var pa=a.m?a.m.pct:-1, pb=b.m?b.m.pct:-1; return pb-pa; });
 
     var html = '';
-    html += '<div class="results-head"><h2>Vaše výsledky</h2><p class="results-sub">Zoradené podľa zhody vašich odpovedí s verejne známymi postojmi kandidátov. Rozklikni "Kandidáti tejto skupiny", ak chceš vybrať konkrétnu osobu v rámci koalície.</p></div>';
-
-    html += '<div class="section-tag"><span class="n">1</span><h3>Predseda Trnavského samosprávneho kraja</h3><span class="cnt">7 kandidátov</span></div>';
+    html += '<div class="results-head"><h2>Vaše výsledky — ' + meta.name + '</h2><p class="results-sub">Zoradené podľa zhody vašich odpovedí s verejne známymi postojmi kandidátov. Rozklikni "Kandidáti tejto skupiny", ak chceš vybrať konkrétnu osobu v rámci koalície.</p></div>';
+    html += '<div class="section-tag"><span class="n">1</span><h3>Predseda kraja</h3><span class="cnt">' + chairRanked.length + ' kandidátov</span></div>';
     html += '<div class="cand-list" id="chairList"></div>';
-
-    html += '<div class="section-tag"><span class="n">2</span><h3>Poslanci — volebný obvod č. 7</h3><span class="cnt">9 mandátov · 50 kandidátov</span></div>';
+    html += '<div class="section-tag"><span class="n">2</span><h3>Poslanci — obvod č. ' + obvod.number + '</h3><span class="cnt">' + (obvod.seats ? obvod.seats+' mandátov' : '') + '</span></div>';
+    if(blocRanked.length === 0 && obvod.independents.length === 0){
+      html += '<div class="indep-box"><h4>Kandidáti na poslancov v tomto obvode sa ešte dopĺňajú</h4><p>Oficiálny zoznam kandidátov pre tento obvod sa nepodarilo zohnať — skúste to prosím neskôr, alebo si medzitým naštudujte kandidátov na predsedu kraja vyššie.</p></div>';
+    } else {
     html += '<div class="cand-list" id="blocList"></div>';
-
-    html += '<div class="indep-box" style="margin-top:16px;">' +
-      '<h4>17 nezávislých kandidátov bez spoločného programu</h4>' +
-      '<p>Títo kandidáti nekandidujú v koalícii, takže neexistuje jeden „program“, ktorý by sme mohli porovnať s vašimi odpoveďami. Ich osobné priority si oplatí naštudovať individuálne — tu je zoznam pre orientáciu.</p>' +
-      '<div class="indep-grid" id="indepGrid"></div>' +
-    '</div>';
-
-    html += '<div class="retake"><button id="retakeBtn" type="button">↺ Vyplniť kalkulačku znova</button></div>';
+    }
+    if(obvod.independents.length){
+      html += '<div class="indep-box" style="margin-top:16px;">' +
+        '<h4>' + obvod.independents.length + ' nezávislých kandidátov bez spoločného programu</h4>' +
+        '<p>Títo kandidáti nekandidujú v koalícii, takže neexistuje jeden „program“, ktorý by sme mohli porovnať s vašimi odpoveďami. Ich osobné priority si oplatí naštudovať individuálne — tu je zoznam pre orientáciu.</p>' +
+        '<div class="indep-grid" id="indepGrid"></div></div>';
+    }
+    html += '<div class="retake"><button id="retakeBtn" type="button">↺ Vyplniť znova (rovnaký obvod)</button><button id="changeObvodBtn" type="button">Zmeniť obvod / kraj</button></div>';
 
     resultsSection.innerHTML = html;
-
-    var chairList = document.getElementById('chairList');
-    chairRanked.forEach(function(r, i){ chairList.appendChild(renderChairCard(r.c, i+1)); });
-
-    var blocList = document.getElementById('blocList');
-    blocRanked.forEach(function(r, i){ blocList.appendChild(renderBlocCard(r.b, i+1)); });
-
-    var indepGrid = document.getElementById('indepGrid');
-    INDEPENDENTS.forEach(function(p){
-      var parts = p.split(' – ');
-      var d = document.createElement('div');
-      d.className = 'indep-item';
-      d.innerHTML = '<b>' + parts[0] + '</b>' + (parts[1] ? ' — ' + parts[1] : '');
-      indepGrid.appendChild(d);
-    });
-
+    document.getElementById('chairList').append.apply(document.getElementById('chairList'), chairRanked.map(function(r,i){ return renderChairCard(r.c, i+1); }));
+    var blocListEl = document.getElementById('blocList');
+    if(blocListEl){ blocListEl.append.apply(blocListEl, blocRanked.map(function(r,i){ return renderBlocCard(r.b, i+1); })); }
+    if(obvod.independents.length){
+      var indepGrid = document.getElementById('indepGrid');
+      obvod.independents.forEach(function(p){
+        var parts = p.split(' – ');
+        var d = document.createElement('div'); d.className='indep-item';
+        d.innerHTML = '<b>' + parts[0] + '</b>' + (parts[1] ? ' — ' + parts[1] : '');
+        indepGrid.appendChild(d);
+      });
+    }
     document.getElementById('retakeBtn').addEventListener('click', function(){
-      answers = new Array(QUESTIONS.length).fill(null);
-      idx = 0;
-      resultsSection.hidden = true;
-      resultsSection.innerHTML = '';
-      quizSection.hidden = false;
-      renderQuestion();
+      state.answers = new Array(QUESTIONS.length).fill(null); state.idx = 0;
+      resultsSection.hidden = true; resultsSection.innerHTML = '';
+      quizSection.hidden = false; renderQuestion();
       window.scrollTo({top:0, behavior:'smooth'});
     });
-
+    document.getElementById('changeObvodBtn').addEventListener('click', function(){
+      resultsSection.hidden = true; resultsSection.innerHTML = '';
+      selectKraj(state.krajId);
+    });
+    renderSources();
     window.scrollTo({top:0, behavior:'smooth'});
   }
 
-  // footer sources
-  var allSources = [];
-  CHAIR.forEach(function(c){ c.sources.forEach(function(s){ allSources.push(s); }); });
-  var seen = {};
-  var srcGrid = document.getElementById('srcGrid');
-  allSources.forEach(function(s){
-    if(seen[s.url]) return; seen[s.url]=true;
-    var a = document.createElement('a');
-    a.href = s.url; a.target = '_blank'; a.rel = 'noopener'; a.textContent = s.label + ' — ' + s.url;
-    srcGrid.appendChild(a);
-  });
+  function renderSources(){
+    var srcGrid = document.getElementById('srcGrid');
+    srcGrid.innerHTML = '';
+    var seen = {};
+    Object.keys(KRAJE).forEach(function(kid){
+      KRAJE[kid].chair.candidates.forEach(function(c){
+        (c.sources||[]).forEach(function(s){
+          if(seen[s.url]) return; seen[s.url]=true;
+          var a = document.createElement('a'); a.href=s.url; a.target='_blank'; a.rel='noopener';
+          a.textContent = s.label + ' — ' + s.url; srcGrid.appendChild(a);
+        });
+      });
+    });
+  }
 
-  renderQuestion();
+  renderKrajGrid();
+  renderSources();
 })();
 </script>
 </body>
